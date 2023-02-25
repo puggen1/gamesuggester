@@ -11,7 +11,7 @@ function App() {
   if(userStatus){
     let token = localStorage.getItem("token");
     let username = localStorage.getItem("username");
-    let profilePicture = "https://api.dicebear.com/5.x/initials/svg?backgroundType=gradientLinear&seed=" + username;
+    let profilePicture = "https://api.dicebear.com/5.x/initials/svg?backgroundType=gradientLinear&radius=10&seed=" + username;
     user = {
       username,
       userStatus,
