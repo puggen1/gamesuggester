@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Press+Start+2P&display=swap');
+body{
+    background-color: #2F4E5C;
+}
+.logo{
+    font-family: 'Press Start 2P', cursive;
+    color: #E9E9E9;
+    font-size: 1.8rem;
+    margin: 5px;
+    width: 33%;
+    text-align: center;
+}
+nav{
+    width: 33%;
+}
+p, button{
+    font-family: 'Lato', sans-serif;
+}
+h1, h2, h3{
+
+}

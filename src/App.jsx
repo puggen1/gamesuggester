@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Frontpage from "./components/Pages/Frontpage";
 import Profile from "./components/Pages/Profile";
 import Game from "./components/Pages/Game";
+import "./assets/css/style.css"
+import "./assets/css/buttons.css"
 
 function App() {
   let userStatus = localStorage.getItem("userStatus");

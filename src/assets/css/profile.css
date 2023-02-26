@@ -1,0 +1,11 @@
+.headerProfile{
+    width: 33%;
+    align-items: center;
+    justify-content: flex-end;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: #E9E9E9;
+    gap: 10px;
+}
