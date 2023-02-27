@@ -2,7 +2,16 @@
 body{
     background-color: #2F4E5C;
 }
-.logo{
+.App{
+    min-height: 100vh;
+    margin: 0 auto;
+    display:flex;
+    flex-direction:column;
+}
+.mainContent{
+    flex: 1;
+}
+.logo, .by{
     font-family: 'Press Start 2P', cursive;
     color: #E9E9E9;
     font-size: 1.8rem;
@@ -10,6 +19,7 @@ body{
     width: 33%;
     text-align: center;
 }
+.by{width: 100%;}
 nav{
     width: 33%;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Frontpage = () => {
   return (
-    <div>Frontpage</div>
+    <div className='mainContent'>Frontpage</div>
   )
 }
 
