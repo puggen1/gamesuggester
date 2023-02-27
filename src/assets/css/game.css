@@ -4,17 +4,49 @@ height: 200px;
 text-decoration: none;
 color:#e9e9e9;
 font-family: 'Lato', sans-serif;
+position: relative;
 }
 .gameCard:hover > .gameCardInfo{
-    display: block;
+    visibility: visible;
+    opacity: 0.9;
 }
 .gameCardInfo{
-    display: none;
-
+    position: absolute;
+    background-color: #213D46;
+    box-sizing: border-box;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 0 5%;
+    visibility: hidden;
+    transition: opacity 0.5s;
+    display:grid;
+    grid-template-areas: "name ."
+    "username ."
+    "view vote";
+    grid-template-columns: 1fr 1fr;
+}
+.gameCardInfo a{
+    color: #e9e9e9;    
 }
 .cardImage img{
     border-radius: 5px;
     width: 100%;
     height: 200px;
     object-fit: cover;
+    position: absolute;
+}
+.gameCardInfo .name{
+    grid-area: name;
+    margin-top: 0px;
+}
+.gameCardInfo .userLink{
+    grid-area: username;
+}
+.gameCardInfo .view{
+    grid-area: view;
+}
+.gameCardInfo .cardVote{
+    grid-area: vote;
 }
