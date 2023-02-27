@@ -1,0 +1,9 @@
+.gameCard{
+
+}
+.gameCard:hover > .gameCardInfo{
+    display: block;
+}
+.gameCardInfo{
+    display: none;
+}
