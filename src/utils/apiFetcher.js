@@ -1,6 +1,6 @@
 import url from "./baseUrl"
 import cors from "./tempCors";
-async function apiFetch(subUrl, data={}){
+async function apiFetch(subUrl, data=null){
     let fullUrl =cors + url + subUrl;
     let method = "GET";
     let options = {
@@ -14,7 +14,6 @@ async function apiFetch(subUrl, data={}){
         options.method = "POST";
         options.body = JSON.stringify(data)
     }
-    console.log(options)
     let result = await fetch(fullUrl, options)
     return await result.json()
 }
