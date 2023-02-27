@@ -12,8 +12,8 @@ const Frontpage = () => {
     
   })
   return (
-    <div className='mainContent'>{games.map(game =>{
-      return <GameCard key={game.name} name={game.name} user={game.username} url={game.url} image={game.image} added={game.added} />
+    <div id="gameCards" className='mainContent'>{games.map(game =>{
+      return <GameCard key={game.name} name={game.name} user={game.username} url={game.url} image={game.image} added={game.added} singleGame={"game?title=" + game.name}/>
     })}</div>
   )
 }
