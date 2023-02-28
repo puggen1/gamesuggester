@@ -1,0 +1,12 @@
+.profileImage.small{
+    height: 50px;
+    width: 50px;
+}
+.profileImage.medium{
+    height: 100px;
+    width: 100px;
+}
+.profileImage.big{
+    height: 150px;
+    width: 150px;
+}
