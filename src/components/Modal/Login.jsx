@@ -12,7 +12,7 @@ let LoginModal = styled.div`
 
 const Login = ({reference, target}) => {
   return (
-    <Background onClick={()=>{modalToggler(target.current, styles.active)}} ref={reference}>
+    <Background className="modalBackground" onClick={(event)=>{modalToggler(target.current, styles.active, event)}} ref={reference}>
    <LoginModal>
     
    </LoginModal>

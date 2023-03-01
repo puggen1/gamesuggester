@@ -23,7 +23,7 @@ position: relative;
     transition: opacity 0.5s;
     display:grid;
     grid-template-areas: "name name"
-    "username ."
+    "username username"
     "view vote";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 2fr auto;

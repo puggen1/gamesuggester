@@ -9,7 +9,7 @@ const HeaderProfile = ({user, loginModal}) => {
         )
     }
   return (
-    <div className="headerProfile" ><Button target={loginModal} event={modalToggler} type="primary" text="login / register"/></div>
+    <div className="headerProfile" ><Button target={loginModal} event={modalToggler} type="primary modalButton" text="login / register"/></div>
 
   )
 }
