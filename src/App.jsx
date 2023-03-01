@@ -1,6 +1,8 @@
 import Footer from "./components/Footer"
 import Header from "./components/Header/Header"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useRef } from "react";
+import Login from "./components/Modal/Login";
 import Frontpage from "./components/Pages/Frontpage";
 import Profile from "./components/Pages/Profile";
 import Game from "./components/Pages/Game";
@@ -10,6 +12,7 @@ import "./assets/css/buttons.css"
 function App() {
   let userStatus = localStorage.getItem("userStatus");
   let user;
+  let loginModal = useRef(null);
   if(userStatus){
     let token = localStorage.getItem("token");
     let username = localStorage.getItem("username");
@@ -24,10 +27,12 @@ function App() {
   else{
     user = false;
   }
+  
   return (
     <div className="App">
       <BrowserRouter>
-      <Header user={user}/>
+      <Header loginModal={loginModal} user={user}/>
+      <Login target={loginModal} reference={loginModal}/>
       <Routes>
         <Route index element={<Frontpage/>}/>
         <Route path="profile" element={<Profile user={user}/>}/>

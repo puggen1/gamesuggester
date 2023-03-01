@@ -1,8 +1,8 @@
 import React from 'react'
-
-const Button = ({target, text, type}) => {
-  return (
-    <button className={type} onClick={()=>{console.log("test")}}>{text}</button>
+import styles from "./Modal/modalStyle.module.css";
+const Button = ({target, event, text, type}) => {
+    return (
+    <button className={type} onClick={()=>{event(target.current, styles.active)}}>{text}</button>
   )
 }
 
