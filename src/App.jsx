@@ -1,18 +1,28 @@
 import Footer from "./components/Footer"
 import Header from "./components/Header/Header"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useRef } from "react";
-import Login from "./components/Modal/Login";
+import { useState } from "react";
+import Modal from "./components/Modal/Modal";
 import Frontpage from "./components/Pages/Frontpage";
 import Profile from "./components/Pages/Profile";
 import Game from "./components/Pages/Game";
 import "./assets/css/style.css"
 import "./assets/css/buttons.css"
-
+import modalTarget from "./components/Modal/modalTarget";
 function App() {
+  let [active, setActive] = useState(false)
+  let [modalType, setModalType] = useState("login");
+  const modalToggler = (event)=>{
+    let validTarget = modalTarget(event)
+    if(validTarget){
+      setActive(!active)
+    }
+    setModalType(event.target.getAttribute("data-modal-type"));
+
+  }
+
   let userStatus = localStorage.getItem("userStatus");
   let user;
-  let loginModal = useRef(null);
   if(userStatus){
     let token = localStorage.getItem("token");
     let username = localStorage.getItem("username");
@@ -27,12 +37,11 @@ function App() {
   else{
     user = false;
   }
-  
   return (
     <div className="App">
       <BrowserRouter>
-      <Header loginModal={loginModal} user={user}/>
-      <Login target={loginModal} reference={loginModal}/>
+      <Header modalFunction={modalToggler} user={user} />
+      <Modal type={modalType} modalFunction={modalToggler} status={active}/>
       <Routes>
         <Route index element={<Frontpage/>}/>
         <Route path="profile" element={<Profile user={user}/>}/>

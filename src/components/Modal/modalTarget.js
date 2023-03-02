@@ -1,10 +1,11 @@
-let modalToggler = (modal, classname, event) =>{
+let modalTarget = (event) =>{
+
     if(event.target.classList.contains("modalBackground") || event.target.classList.contains("modalButton")){
-        modal.classList.toggle(classname)
+        return true
     }
     else{
-        return
+        return false
     }
 }
 
-export default modalToggler
+export default modalTarget

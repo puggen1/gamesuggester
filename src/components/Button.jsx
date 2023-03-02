@@ -1,9 +1,13 @@
 import React from 'react'
-import styles from "./Modal/modalStyle.module.css";
-const Button = ({target, event, text, type}) => {
+const Button = ({text, type, modalFunction, dataType}) => {
+  if(modalFunction){
+    return(
+      <button onClick={(e)=>{modalFunction(e)}} data-modal-type={dataType} className={type}>{text}</button>
+    )
+  }else{
     return (
-    <button className={type} onClick={(e)=>{event(target.current, styles.active, e)}}>{text}</button>
+    <button  className={type}>{text}</button>
   )
-}
+}}
 
 export default Button

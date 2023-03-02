@@ -15,7 +15,7 @@ let Background = styled.div`
     z-index: 1;
     margin: 0px;
     padding: 0px;
-    display: none;
+    display: flex;
 `
 
 
