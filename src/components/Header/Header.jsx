@@ -4,11 +4,11 @@ import Navigation from '../Navigation'
 import "../../assets/css/header.css"
 import "../../assets/css/profile.css"
 
-const Header = ({user, modalFunction}) => {
+const Header = ({user}) => {
    return(<header>
         <Navigation />
         <p className='logo'>Game Suggester</p>
-        <HeaderProfile modalFunction={modalFunction} user={user}/>
+        <HeaderProfile user={user}/>
     </header>)
 
 }

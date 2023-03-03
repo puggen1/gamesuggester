@@ -1,7 +1,4 @@
-import AddGame from "./addGame"
-import Login from "./login"
 import Background from "./ModalBackground"
-import Register from "./register"
 
 //changing from css toggle to return toggle to prop toggle
 const Modal = ({status, modalFunction, type}) => {
@@ -16,7 +13,7 @@ const Modal = ({status, modalFunction, type}) => {
   }  else if(type === "register"){
       return (
         <Background onClick={(e)=>{modalFunction(e)}} className="modalBackground">
-          <Register/>
+          <Register modalFunction={modalFunction}/>
         </Background>
       )
   }

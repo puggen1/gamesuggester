@@ -8,19 +8,7 @@ import Profile from "./components/Pages/Profile";
 import Game from "./components/Pages/Game";
 import "./assets/css/style.css"
 import "./assets/css/buttons.css"
-import modalTarget from "./components/Modal/modalTarget";
 function App() {
-  let [active, setActive] = useState(false)
-  let [modalType, setModalType] = useState("login");
-  const modalToggler = (event)=>{
-    let validTarget = modalTarget(event)
-    if(validTarget){
-      setActive(!active)
-    }
-    setModalType(event.target.getAttribute("data-modal-type"));
-
-  }
-
   let userStatus = localStorage.getItem("userStatus");
   let user;
   if(userStatus){
@@ -40,8 +28,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header modalFunction={modalToggler} user={user} />
-      <Modal type={modalType} modalFunction={modalToggler} status={active}/>
+      <Header user={user} />
+      <Modal />
       <Routes>
         <Route index element={<Frontpage/>}/>
         <Route path="profile" element={<Profile user={user}/>}/>
