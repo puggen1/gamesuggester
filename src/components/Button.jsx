@@ -1,11 +1,10 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import { borderRadius } from '@mui/system';
-const MyButton = ({text, type, }) => {
- 
+const ActivateModalButton = ({text, type, dataType, handleModalFunction, toggleModal=null}) => {
     return (
-      <Button color="info" sx={{borderRadius:"5px"}} variant="contained">Hello World</Button>
+      <Button onClick={(e)=>{handleModalFunction(dataType), toggleModal ? toggleModal(true): null}} color="info" sx={{borderRadius:"5px"}} variant="contained">{text}</Button>
   )
 }
 
-export default MyButton
+export default ActivateModalButton
