@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../assets/css/profileImage.css";
+import "../../assets/style/profileImage.css";
 const ProfileImage = ({picture, size}) => {
   let classes = `profileImage ${size}`;
   return (

@@ -2,12 +2,14 @@ import Footer from "./components/Footer"
 import Header from "./components/Header/Header"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { ThemeProvider } from "@mui/material";
 import Modal from "./components/Modal/Modal";
 import Frontpage from "./components/Pages/Frontpage";
 import Profile from "./components/Pages/Profile";
 import Game from "./components/Pages/Game";
-import "./assets/css/style.css"
-import "./assets/css/buttons.css"
+import "./assets/style/style.css"
+import "./assets/style/buttons.css"
+import { theme } from "./assets/style/theme";
 function App() {
   let userStatus = localStorage.getItem("userStatus");
   let user;
@@ -26,6 +28,7 @@ function App() {
     user = false;
   }
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <BrowserRouter>
       <Header user={user} />
@@ -39,6 +42,7 @@ function App() {
 
       </BrowserRouter>
     </div>
+    </ThemeProvider>
   )
 }
 

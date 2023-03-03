@@ -1,8 +1,8 @@
 import React from 'react'
 import HeaderProfile from '../Profile/HeaderProfile'
 import Navigation from '../Navigation'
-import "../../assets/css/header.css"
-import "../../assets/css/profile.css"
+import "../../assets/style/header.css"
+import "../../assets/style/profile.css"
 
 const Header = ({user}) => {
    return(<header>
