@@ -1,7 +1,7 @@
 import Footer from "./components/Footer"
 import Header from "./components/Header/Header"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "@mui/material";
 import ModalComp from "./components/Modal/Modal";
 import Frontpage from "./components/Pages/Frontpage";
@@ -18,34 +18,35 @@ function App() {
 let [modalStatus, setModalStatus] = useState(false);
   let userStatus = localStorage.getItem("userStatus");
   let user;
-  if(userStatus){
-    let token = localStorage.getItem("token");
-    let username = localStorage.getItem("username");
-    let profilePicture = "https://api.dicebear.com/5.x/initials/svg?backgroundType=gradientLinear&radius=10&seed=" + username;
-    user = {
-      username,
-      userStatus,
-      token,
-      profilePicture
+  useEffect(()=>{
+    if(userStatus){
+      let token = localStorage.getItem("token");
+      let username = localStorage.getItem("username");
+      let profilePicture = "https://api.dicebear.com/5.x/initials/svg?backgroundType=gradientLinear&radius=10&seed=" + username;
+      user = {
+        username,
+        userStatus,
+        token,
+        profilePicture
+      }
     }
-  }
-  else{
-    user = false;
-  }
+    else{
+      user = false;
+    }
+  }, [userStatus])
+ 
   return (
     <ThemeProvider theme={theme}>
     <div className="App">
-      <BrowserRouter>
       <Header user={user} handleModalFunction={setModal} toggleModal={setModalStatus}/>
       <ModalComp type={modal} status={modalStatus} handleModalFunction={setModal} setModalStatus={setModalStatus}/>
       <Routes>
         <Route index element={<Frontpage/>}/>
         <Route path="profile" element={<Profile user={user}/>}/>
-        <Route path="game" element={<Game />}/>
+        <Route path="game/:name" element={<Game />}/>
+        <Route path="*" element={<h1>404 not found</h1>}/>
       </Routes>
       <Footer/>
-      
-      </BrowserRouter>
     </div>
     </ThemeProvider>
   )

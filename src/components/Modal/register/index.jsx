@@ -3,11 +3,11 @@ import Typography from '@mui/material/Typography';
 import ActivateModalButton from "../../Button";
 import React from "react";
 import { style } from "../login/style";
+import UserAction from "../UserAction";
 const Register =React.forwardRef(({handleModalFunction}, ref)=>{
     return (
       <Box ref={ref} sx={style}>
-          <ActivateModalButton dataType="login" handleModalFunction={handleModalFunction} text="Login" />
-          <ActivateModalButton dataType="AddGame" handleModalFunction={handleModalFunction} text="Register" />
+         <UserAction handleModalFunction={handleModalFunction}/>
       </Box>
     )
   })

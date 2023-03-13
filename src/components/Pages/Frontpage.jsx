@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import getGames from '../../apiHandlers/getGames'
 import GameCard from '../Game/GameCard';
 const Frontpage = () => {
-  let [games, setGames] = useState([]);
+  let [games, setGames] = useState(null);
   useEffect(()=>{
   const runner = async ()=>{
     let something = await getGames()
@@ -16,7 +16,7 @@ const Frontpage = () => {
   }, [])
   return (
     <div id="gameCards" className='mainContent'>{!games ? "no data yet" : games.map(game =>{
-      return <GameCard key={game.name} name={game.name} user={game.username} url={game.url} image={game.image} added={game.added} singleGame={"game?title=" + game.name}/>
+      return <GameCard key={game.name} name={game.name} user={game.username} url={game.url} image={game.image} added={game.added}/>
     })}</div>
   )
 }
