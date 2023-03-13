@@ -1,7 +1,8 @@
 import Footer from "./components/Footer"
 import Header from "./components/Header/Header"
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "./context/User";
 import { ThemeProvider } from "@mui/material";
 import ModalComp from "./components/Modal/Modal";
 import Frontpage from "./components/Pages/Frontpage";
@@ -14,26 +15,22 @@ function App() {
   /*
   /modal controls
   */
- let [modal, setModal] = useState("");
-let [modalStatus, setModalStatus] = useState(false);
-  let userStatus = localStorage.getItem("userStatus");
-  let user;
+  let [modal, setModal] = useState("");
+  let [modalStatus, setModalStatus] = useState(false);
+  let [user, setUser] = useState(null);
+  const {loggedIn, setLoggedIn} = useContext(UserContext)
   useEffect(()=>{
+    let userStatus = localStorage.getItem("userStatus");
     if(userStatus){
       let token = localStorage.getItem("token");
       let username = localStorage.getItem("username");
       let profilePicture = "https://api.dicebear.com/5.x/initials/svg?backgroundType=gradientLinear&radius=10&seed=" + username;
-      user = {
-        username,
-        userStatus,
-        token,
-        profilePicture
-      }
+      setUser({username, userStatus, token, profilePicture});
     }
     else{
-      user = false;
+      setUser(null);
     }
-  }, [userStatus])
+  },[loggedIn])
  
   return (
     <ThemeProvider theme={theme}>

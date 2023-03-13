@@ -6,7 +6,7 @@ import "../../assets/style/profile.css"
 
 const Header = ({user, handleModalFunction, toggleModal}) => {
    return(<header>
-        <Navigation />
+        <Navigation handleModalFunction={handleModalFunction} toggleModal={toggleModal} dataType="sidenav"/>
         <p className='logo'>Game Suggester</p>
         <HeaderProfile toggleModal={toggleModal} handleModalFunction={handleModalFunction} user={user}/>
     </header>)

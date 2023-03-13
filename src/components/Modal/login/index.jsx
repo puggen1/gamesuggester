@@ -7,8 +7,10 @@ import { InputForm } from "../style";
 import styled from "styled-components";
 import { FormButton } from "../../Button";
 import login from "../../../apiHandlers/login";
-const Login =React.forwardRef(({handleModalFunction}, ref)=>{
-
+import { UserContext } from "../../../context/User";
+import { useContext } from "react";
+const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
+  let {loggedIn, setLoggedIn} = useContext(UserContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [responseStatus, setResponseStatus] = useState(false)
@@ -30,6 +32,8 @@ const Login =React.forwardRef(({handleModalFunction}, ref)=>{
         localStorage.setItem("token", response.token);
         localStorage.setItem("username", response.username);
         localStorage.setItem("userStatus", true)
+        setLoggedIn(true)
+        setModalStatus(false)
       }
   }
 
