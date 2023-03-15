@@ -4,32 +4,35 @@ import Login from "./login";
 import Register from "./register";
 import AddGame from "./addGame";
 import SideNav from "./sideNav";
+import { useContext } from "react";
+import { ModalContext } from "../../context/Modal";
 //changing from css toggle to return toggle to prop toggle
-const ModalComp = ({status, type, setModalStatus, handleModalFunction}) => {
-  if(type === "login"){
+const ModalComp = () => {
+  const {modalStatus, setModalStatus, modal, setModal} = useContext(ModalContext)
+  if(modal === "login"){
     return(
-      <Modal open={status} onClose={()=>{setModalStatus(false)}}>
-        <Login key="login" handleModalFunction={handleModalFunction} setModalStatus={setModalStatus}/>
+      <Modal open={modalStatus} onClose={()=>{setModalStatus(false)}}>
+        <Login key="login" handleModalFunction={setModal} setModalStatus={setModalStatus}/>
       </Modal>
     ) 
   }
-  else if(type === "register"){
+  else if(modal === "register"){
     return(
-      <Modal open={status} onClose={()=>{setModalStatus(false)}}>
-        <Register key="register" handleModalFunction={handleModalFunction} setModalStatus={setModalStatus}/>
+      <Modal open={modalStatus} onClose={()=>{setModalStatus(false)}}>
+        <Register key="register" handleModalFunction={setModal} setModalStatus={setModalStatus}/>
       </Modal>
     )
   }
-  else if(type === "sidenav"){
+  else if(modal === "sidenav"){
     return(
-      <Modal open={status} onClose={()=>{setModalStatus(false)}}>
-        <SideNav key="sidenav" handleModalFunction={handleModalFunction} setModalStatus={setModalStatus}/>
+      <Modal open={modalStatus} onClose={()=>{setModalStatus(false)}}>
+        <SideNav key="sidenav" handleModalFunction={setModal} setModalStatus={setModalStatus}/>
       </Modal>
     )
   } 
   else{
     return(
-      <Modal key="AddGame" open={status} onClose={()=>{setModalStatus(false)}}>
+      <Modal key="AddGame" open={modalStatus} onClose={()=>{setModalStatus(false)}}>
         <AddGame/>
       </Modal>
     )

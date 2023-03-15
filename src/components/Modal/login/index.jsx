@@ -9,6 +9,7 @@ import { FormButton } from "../../Button";
 import login from "../../../apiHandlers/login";
 import { UserContext } from "../../../context/User";
 import { useContext } from "react";
+
 const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
   let {loggedIn, setLoggedIn} = useContext(UserContext)
   const [email, setEmail] = useState("");

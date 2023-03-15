@@ -1,9 +1,12 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import { borderRadius } from '@mui/system';
-const ActivateModalButton = ({text, type, dataType, handleModalFunction, toggleModal=null}) => {
+import { useContext } from 'react';
+import { ModalContext } from '../context/Modal';
+const ActivateModalButton = ({text, type, dataType,}) => {
+  const {setModalStatus, setModal} = useContext(ModalContext)
     return (
-      <Button onClick={(e)=>{handleModalFunction(dataType), toggleModal ? toggleModal(true): null}} color="info" sx={{borderRadius:"5px"}} variant="contained">{text}</Button>
+      <Button onClick={(e)=>{setModal(dataType), setModalStatus ? setModalStatus(true): null}} color="info" sx={{borderRadius:"5px"}} variant="contained">{text}</Button>
   )
 }
 const FormButton = ({text, type})=>{

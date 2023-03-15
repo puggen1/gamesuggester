@@ -15,8 +15,6 @@ function App() {
   /*
   /modal controls
   */
-  let [modal, setModal] = useState("");
-  let [modalStatus, setModalStatus] = useState(false);
   let [user, setUser] = useState(null);
   const {loggedIn, setLoggedIn} = useContext(UserContext)
   useEffect(()=>{
@@ -35,11 +33,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <div className="App">
-      <Header user={user} handleModalFunction={setModal} toggleModal={setModalStatus}/>
-      <ModalComp type={modal} status={modalStatus} handleModalFunction={setModal} setModalStatus={setModalStatus}/>
+      <Header user={user}/>
+      <ModalComp/>
       <Routes>
         <Route index element={<Frontpage/>}/>
-        <Route path="profile" element={<Profile user={user}/>}/>
+        <Route path="profile/:name" element={<Profile user={user}/>}/>
         <Route path="game/:name" element={<Game />}/>
         <Route path="*" element={<h1>404 not found</h1>}/>
       </Routes>

@@ -3,12 +3,13 @@ import HeaderProfile from '../Profile/HeaderProfile'
 import Navigation from '../Navigation'
 import "../../assets/style/header.css"
 import "../../assets/style/profile.css"
+import { Link } from 'react-router-dom'
 
-const Header = ({user, handleModalFunction, toggleModal}) => {
+const Header = ({user}) => {
    return(<header>
-        <Navigation handleModalFunction={handleModalFunction} toggleModal={toggleModal} dataType="sidenav"/>
-        <p className='logo'>Game Suggester</p>
-        <HeaderProfile toggleModal={toggleModal} handleModalFunction={handleModalFunction} user={user}/>
+        <Navigation  dataType="sidenav"/>
+        <Link to="/" className='logo'>Game Suggester</Link>
+        <HeaderProfile  user={user}/>
     </header>)
 
 }
