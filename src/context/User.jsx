@@ -5,10 +5,21 @@ export const UserContext = createContext();
 
 const User = (props)=>{
     const [loggedIn, setLoggedIn] = useState(null);
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const emailChange = (event)=>{
+        setEmail(event.target.value)
+      }
+      const passwordChange = (event)=>{
+        setPassword(event.target.value)
+      }
+      const usernameChange = (event=>{
+        setUsername(event.target.value);
+      })
     return(
         <>
-        <UserContext.Provider value={{loggedIn, setLoggedIn}}>
+        <UserContext.Provider value={{loggedIn, setLoggedIn, email, emailChange, password, passwordChange, usernameChange, username}}>
             {props.children}
         </UserContext.Provider>
         </>

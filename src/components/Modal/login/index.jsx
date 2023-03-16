@@ -11,16 +11,9 @@ import { UserContext } from "../../../context/User";
 import { useContext } from "react";
 
 const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
-  let {loggedIn, setLoggedIn} = useContext(UserContext)
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  let {loggedIn, setLoggedIn, email, emailChange, password, passwordChange} = useContext(UserContext)
+  
   const [responseStatus, setResponseStatus] = useState(false)
-  const emailChange = (event)=>{
-    setEmail(event.target.value)
-  }
-  const passwordChange = (event)=>{
-    setPassword(event.target.value)
-  }
   const loginUser = async (event)=>{
     event.preventDefault()
       let response = await login(email, password)
@@ -35,6 +28,10 @@ const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
         localStorage.setItem("userStatus", true)
         setLoggedIn(true)
         setModalStatus(false)
+        //remove the inputs after completion,(testing)
+        //it does not work?
+        emailChange("")
+        passwordChange("")
       }
   }
 

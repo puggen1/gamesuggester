@@ -9,7 +9,7 @@ const HeaderProfile = ({user}) => {
     const {setModalStatus, setModal} = useContext(ModalContext)
     if(user){
         return(<>
-              <Link className="headerProfile" to={'/profile?username=' + user.username}><p>{user.username}</p> <ProfileImage picture={user.profilePicture} size="small"/> </Link>
+              <Link className="headerProfile" to={'/profile/' + user.username}><p>{user.username}</p> <ProfileImage picture={user.profilePicture} size="small"/> </Link>
               </>
         )
     }
