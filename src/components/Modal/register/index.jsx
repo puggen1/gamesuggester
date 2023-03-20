@@ -13,7 +13,7 @@ import register from "../../../apiHandlers/register";
 import { InputForm } from "../style";
 const Register = React.forwardRef(({handleModalFunction}, ref)=>{
   const [responseStatus, setResponseStatus] = useState(false)
-  const {setModalStatus} = useContext(ModalContext)
+  const {setModalStatus, setModal} = useContext(ModalContext)
   let {email, emailChange, password, passwordChange,username, usernameChange} = useContext(UserContext);
     const registerUser = async  (event)=>{
           event.preventDefault();
@@ -21,7 +21,7 @@ const Register = React.forwardRef(({handleModalFunction}, ref)=>{
           if(response.uid){
             setResponseStatus(false)
             console.log("profile registered")
-            setModalStatus(false);
+            setModal("login")
           }
           else{
             setResponseStatus(true)
