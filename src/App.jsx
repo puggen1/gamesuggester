@@ -18,12 +18,11 @@ function App() {
   let [user, setUser] = useState(null);
   const {loggedIn, setLoggedIn} = useContext(UserContext)
   useEffect(()=>{
-    let userStatus = localStorage.getItem("userStatus");
-    if(userStatus){
+    if(loggedIn){
       let token = localStorage.getItem("token");
       let username = localStorage.getItem("username");
       let profilePicture = "https://api.dicebear.com/5.x/initials/svg?backgroundType=gradientLinear&radius=10&seed=" + username;
-      setUser({username, userStatus, token, profilePicture});
+      setUser({username, userStatus:loggedIn, token, profilePicture});
     }
     else{
       setUser(null);

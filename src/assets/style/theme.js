@@ -20,6 +20,9 @@ const theme = createTheme({
             secondary:"#213D46"
         }
       },
+      typography:{
+        fontFamily: ['Lato', "sans-serif"].join(",")
+      },
     
   });
 

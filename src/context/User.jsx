@@ -4,7 +4,8 @@ import { createContext, useState } from "react";
 export const UserContext = createContext();
 
 const User = (props)=>{
-    const [loggedIn, setLoggedIn] = useState(null);
+    const localstorageStatus = window.localStorage.getItem("userStatus")
+    const [loggedIn, setLoggedIn] = useState(localstorageStatus);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");

@@ -14,11 +14,10 @@ body{
 }
 #gameCards{
     display: flex;
-    gap: 4rem;
+    gap: 4rem 4rem;
     flex-wrap: wrap ;
     width: 75%;
     margin: 20px auto;
-    justify-content: center;
 }
 .logo, .by{
     font-family: 'Press Start 2P', cursive;
