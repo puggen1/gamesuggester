@@ -4,7 +4,7 @@ const getGames = async(title=null)=>{
     if(title){
         url += `?title=${title}}`
     }
-    let result =  await apiFetch(url)
+    let result = await apiFetch(url)
     return result
 }
 

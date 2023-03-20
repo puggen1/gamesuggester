@@ -1,17 +1,14 @@
 import React from 'react'
-import { useRef } from 'react'
+import { useRef, useContext } from 'react'
+import { ModalContext } from '../context/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-const Navigation = () => {
-  let navigation = useRef(null)
+const Navigation = ({dataType}) => {
+  const {setModal, setModalStatus} = useContext(ModalContext)
   return (
     <nav>
-    <label className="navButton" onClick={() =>{
-      //probably the wrong way of doing this, but i can target the useref navigation.current to trigger evetns on the navigation???
-      //navigation.current.innerHTML = ""
-    }}> <FontAwesomeIcon icon={faBars}  /> </label>
-    <div ref={navigation} id='navigation'></div>
+    <label className="navButton" onClick={(e)=>{setModal(dataType), setModalStatus ? setModalStatus(true): null}}> <FontAwesomeIcon icon={faBars}  /> </label>
     </nav>
   )
 }
