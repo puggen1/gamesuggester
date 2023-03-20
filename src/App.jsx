@@ -19,6 +19,7 @@ function App() {
   const {loggedIn, setLoggedIn} = useContext(UserContext)
   useEffect(()=>{
     if(loggedIn){
+      console.log("dette skal kjøre når logget in")
       let token = localStorage.getItem("token");
       let username = localStorage.getItem("username");
       let profilePicture = "https://api.dicebear.com/5.x/initials/svg?backgroundType=gradientLinear&radius=10&seed=" + username;
@@ -26,6 +27,8 @@ function App() {
     }
     else{
       setUser(null);
+      setLoggedIn(false)
+      console.log("dette skal kjøre når logget ut")
     }
   },[loggedIn])
  

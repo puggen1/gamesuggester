@@ -22,7 +22,6 @@ const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
       }
       else{
         setResponseStatus(false);
-        console.log(response)
         localStorage.setItem("token", response.token);
         localStorage.setItem("username", response.username);
         localStorage.setItem("userStatus", true)
@@ -38,8 +37,8 @@ const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
   return (<Box sx={style}>
         <UserAction handleModalFunction={handleModalFunction}/>
         <InputForm onSubmit={loginUser}>
-        <TextField  error={responseStatus} fullWidth type="email" label="Email" onChange={emailChange} value={email} color="warning" variant="filled" />
-        <TextField  error={responseStatus} fullWidth type="password" onChange={passwordChange} value={password} label="Password" color="warning" variant="filled" />
+        <TextField  error={responseStatus} fullWidth type="email" name="email" autoComplete="username email" inputProps={{autoComplete: "email",}} label="Email" onChange={emailChange} value={email} color="warning" variant="filled" />
+        <TextField  error={responseStatus} fullWidth type="password" name="password" autoComplete="password" inputProps={{autoComplete: "password",}} onChange={passwordChange} value={password} label="Password" color="warning" variant="filled" />
         <FormButton type="submit" text="login"/>
         </InputForm>
         </Box>

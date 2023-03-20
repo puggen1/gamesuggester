@@ -5,7 +5,7 @@ export const UserContext = createContext();
 
 const User = (props)=>{
     const localstorageStatus = window.localStorage.getItem("userStatus")
-    const [loggedIn, setLoggedIn] = useState(localstorageStatus);
+    const [loggedIn, setLoggedIn] = useState(localstorageStatus === "true" ? true: false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");

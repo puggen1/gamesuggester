@@ -23,7 +23,7 @@ const SideNav = React.forwardRef(({handleModalFunction}, ref)=>{
         <Button variant='text' color="warning" sx={{fontSize:25}} onClick={()=>{handleModalFunction(loggedIn ? "AddGame" : "login"), console.log(loggedIn)}}>add game +</Button>
         </Grid>
         <Grid item xs={12}>
-        {loggedIn ? <Button onClick={()=>{setLoggedIn(false), localStorage.removeItem("username"), localStorage.setItem("userStatus", false)}} sx={{fontSize:25}} variant="text" color='warning'>Logout</Button> : null}
+        {loggedIn ? <Button onClick={()=>{setLoggedIn(false), localStorage.removeItem("username"),localStorage.removeItem("token"), localStorage.setItem("userStatus", false)}} sx={{fontSize:25}} variant="text" color='warning'>Logout</Button> : null}
         </Grid>
         </Grid>
     </Nav>
