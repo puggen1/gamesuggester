@@ -33,7 +33,7 @@ const ModalComp = () => {
   else{
     return(
       <Modal key="AddGame" open={modalStatus} onClose={()=>{setModalStatus(false)}}>
-        <AddGame/>
+        <AddGame handleModalFunction={setModal}/>
       </Modal>
     )
   }

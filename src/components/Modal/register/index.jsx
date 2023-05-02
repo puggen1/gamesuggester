@@ -32,7 +32,7 @@ const Register = React.forwardRef(({handleModalFunction}, ref)=>{
       <Box ref={ref} sx={style}>
          <UserAction handleModalFunction={handleModalFunction}/>
          <InputForm onSubmit={registerUser} >
-         <TextField  error={responseStatus} fullWidth type="email"  autocomplete="email" name="email"  label="Email" onChange={emailChange} value={email} color="warning" variant="filled" />
+         <TextField  error={responseStatus} fullWidth type="email"  autoComplete="email" name="email"  label="Email" onChange={emailChange} value={email} color="warning" variant="filled" />
          <TextField error={responseStatus} fullWidth type="text"  name="display-name" onChange={usernameChange} value={username} label="username" color="warning" variant="filled"/>
          <TextField  error={responseStatus} fullWidth type="password"  autoComplete="new-password" name="password" onChange={passwordChange} value={password} label="Password" color="warning" variant="filled" />
         <FormButton type="submit" text="Register"/>

@@ -9,14 +9,16 @@ body{
     flex-direction:column;
 }
 .mainContent{
+    margin: 0 auto;
     flex: 1;
     margin-top: 20px;
 }
 #gameCards{
     display: flex;
-    gap: 4rem 4rem;
+    gap: 4rem 2rem;
     flex-wrap: wrap ;
-    width: 75%;
+    width: 80%;
+
     margin: 20px auto;
 }
 .logo, .by{
