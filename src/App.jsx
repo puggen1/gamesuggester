@@ -11,6 +11,7 @@ import Game from "./components/Pages/Game";
 import "./assets/style/style.css"
 import "./assets/style/buttons.css"
 import { theme } from "./assets/style/theme";
+import "@fontsource/lato";
 function App() {
   /*
   /modal controls

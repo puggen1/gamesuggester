@@ -1,8 +1,8 @@
 import React from 'react'
-
+import { GameImg } from './index.styles'
 const GameImage = ({src, alt}) => {
   return (
-   <img src={src} alt={alt}/>
+   <GameImg src={src} alt={alt}/>
   )
 }
 

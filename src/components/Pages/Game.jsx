@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../context/games";
 import GameInfo from "../Game/gameInfo";
 import GameImage from "../Game/gameImage";
+import { GamePage } from "../Game/index.styles";
 const Game =  () => {
   const {games}= useContext(GameContext);
   const {name} = useParams()
@@ -19,12 +20,12 @@ const Game =  () => {
   return (
     <div className='mainContent'>
       {Object.keys(game).length === 0 ? "loading":
-      <>
+      <GamePage>
       <GameInfo name={game.name} user={game.username} description="description coming soon"  steam={game.url}/>
       <GameImage src={game.image} alt={`
       ${game.name}'s image
      `}/>
-     </> 
+     </GamePage> 
 }    
     </div>
   )
