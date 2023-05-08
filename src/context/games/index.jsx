@@ -8,11 +8,7 @@ const Games = ({children}) => {
     let something = await getGames()
     setGames(something);
   }
-  runner()
-  let interval = setInterval(async ()=>{
-    runner()
-  }, 60000) 
-  return () => clearInterval(interval);
+  runner() 
   }, []);
   return (
     <GameContext.Provider value={{games}}>

@@ -4,7 +4,7 @@ const GamePage = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-sizing: border-box;
-  width: 66%;
+  width: 75%;
   margin: 0 auto;
   gap: 5%;
 `;
