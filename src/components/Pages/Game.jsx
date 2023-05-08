@@ -21,7 +21,7 @@ const Game =  () => {
     <div className='mainContent'>
       {Object.keys(game).length === 0 ? "loading":
       <GamePage>
-      <GameInfo name={game.name} user={game.username} description="description coming soon"  steam={game.url}/>
+      <GameInfo name={game.name} user={game.username} description={game.description ? game.description : undefined}  steam={game.url}/>
       <GameImage src={game.image} alt={`
       ${game.name}'s image
      `}/>
