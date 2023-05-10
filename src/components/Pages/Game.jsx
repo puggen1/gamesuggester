@@ -18,7 +18,7 @@ const Game =  () => {
   },[games])
 
   return (
-    <div className='mainContent'>
+    <div id="game" className='mainContent'>
       {Object.keys(game).length === 0 ? "loading":
       <GamePage>
       <GameInfo name={game.name} user={game.username} description={game.description ? game.description : undefined}  steam={game.url}/>

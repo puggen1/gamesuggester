@@ -1,8 +1,11 @@
 header{
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
     padding:  10px 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    @media (max-width: 768px){
+        grid-template-columns: 0.5fr 2fr 0.5fr;
+    }
 }
