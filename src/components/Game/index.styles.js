@@ -12,7 +12,13 @@ const GamePage = styled.div`
   @media (max-width: 1024px) {
     flex-direction: column-reverse;
     gap: 2rem;
-  }
+  };
+  @media (max-width: 425px) {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+
+  };
 `;
 
 export { GamePage };

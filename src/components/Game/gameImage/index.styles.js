@@ -17,6 +17,10 @@ const GameImg = styled.img`
     width: 75%;
     max-width: 75%;
     margin: 0 auto;
+  };
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
   }
 `;
 
