@@ -3,11 +3,12 @@ import getGames from "../../apiHandlers/getGames";
 export const GameContext = createContext()
 const Games = ({children}) => {
   let [games, setGames] = useState([]);
-  useEffect(()=>{
   const runner = async ()=>{
     let something = await getGames()
     setGames(something);
   }
+  useEffect(()=>{
+    console.log("fetching games....")
   runner() 
   }, []);
   return (
