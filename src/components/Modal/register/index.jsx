@@ -9,32 +9,38 @@ import { UserContext } from "../../../context/User";
 import { ModalContext } from "../../../context/Modal";
 import { useContext, useState } from "react";
 import { FormButton } from "../../Button";
-import register from "../../../apiHandlers/register";
+import registerUserApiCall from "../../../apiHandlers/register";
 import { InputForm } from "../style";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import registerSchema from "../../../utils/schemas/register";
 const Register = React.forwardRef(({handleModalFunction}, ref)=>{
+
+  const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(registerSchema)})
+
+
+  const registerUser =async (data)=>{
+    let response = await registerUserApiCall(data.email, data.password, data.username)
+    if(response.uid){
+      setResponseStatus(false)
+      console.log("profile registered")
+      setModal("login")
+    }
+    else{
+      setResponseStatus(true)
+      console.log(response.message)
+    }
+  }
+
   const [responseStatus, setResponseStatus] = useState(false)
   const {setModalStatus, setModal} = useContext(ModalContext)
-  let {email, emailChange, password, passwordChange,username, usernameChange} = useContext(UserContext);
-    const registerUser = async  (event)=>{
-          event.preventDefault();
-          let response = await register(email, password, username)
-          if(response.uid){
-            setResponseStatus(false)
-            console.log("profile registered")
-            setModal("login")
-          }
-          else{
-            setResponseStatus(true)
-            console.log(response.message)
-          }
-      }
     return (
       <Box ref={ref} sx={style}>
          <UserAction handleModalFunction={handleModalFunction}/>
-         <InputForm onSubmit={registerUser} >
-         <TextField  error={responseStatus} fullWidth type="email"  autocomplete="email" name="email"  label="Email" onChange={emailChange} value={email} color="warning" variant="filled" />
-         <TextField error={responseStatus} fullWidth type="text"  name="display-name" onChange={usernameChange} value={username} label="username" color="warning" variant="filled"/>
-         <TextField  error={responseStatus} fullWidth type="password"  autoComplete="new-password" name="password" onChange={passwordChange} value={password} label="Password" color="warning" variant="filled" />
+         <InputForm onSubmit={handleSubmit(registerUser)} >
+         <TextField  error={responseStatus} fullWidth type="email"  autoComplete="email" name="email"  label="Email" {...register("email")} color="warning" variant="filled" />
+         <TextField error={responseStatus} fullWidth type="text"  name="display-name" {...register("username")} label="username" color="warning" variant="filled"/>
+         <TextField  error={responseStatus} fullWidth type="password"  autoComplete="new-password" name="password" {...register("password")} label="Password" color="warning" variant="filled" />
         <FormButton type="submit" text="Register"/>
         </InputForm>
       </Box>

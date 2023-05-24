@@ -1,28 +1,12 @@
-import React, {useEffect, useState} from 'react'
-import getGames from '../../apiHandlers/getGames'
+import {useContext} from 'react'
+import { GameContext } from '../../context/games';
 import GameCard from '../Game/GameCard';
-/*  
-import { useContext } from 'react';
-import { UserContext } from '../../context/User';
-  <button onClick={()=>{setLoggedIn(false), localStorage.clear()}}>logoutTest</button>
-*/
+
 const Frontpage = () => {
-  //const {loggedIn, setLoggedIn} = useContext(UserContext)
-  let [games, setGames] = useState(null);
-  useEffect(()=>{
-  const runner = async ()=>{
-    let something = await getGames()
-    setGames(something);
-  }
-  runner()
-  let interval = setInterval(async ()=>{
-    runner()
-  }, 60000) 
-  return () => clearInterval(interval);
-  }, []);
+const {games} = useContext(GameContext);
   return (
     <div className='mainContent'>
-    <div id="gameCards">{!games ? "no data yet" : games.map(game =>{
+    <div id="gameCards">{games.length === 0 ? "no data yet" : games.map(game =>{
       return <GameCard key={game.name} name={game.name} user={game.username} url={game.url} image={game.image} added={game.added}/>
     })}
     </div>

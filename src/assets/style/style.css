@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Press+Start+2P&display=swap');
 body{
     background-color: #2F4E5C;
+    margin: 0;
 }
 .App{
     min-height: 100vh;
@@ -9,14 +10,22 @@ body{
     flex-direction:column;
 }
 .mainContent{
+    margin: 0 auto;
     flex: 1;
     margin-top: 20px;
 }
+#game{
+    margin: auto 0;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 5rem;
+    }
 #gameCards{
     display: flex;
-    gap: 4rem 4rem;
+    gap: 4rem 2rem;
     flex-wrap: wrap ;
-    width: 75%;
+    width: 80%;
+    justify-content: center;
     margin: 20px auto;
 }
 .logo, .by{
@@ -24,19 +33,18 @@ body{
     color: #E9E9E9;
     font-size: 1.8rem;
     margin: 5px;
-    width: 33%;
     text-align: center;
 }
 .logo{
     text-decoration: none;
+    box-sizing: border-box;
+    grid-column: 2/3;
+    margin: 0;
 }
 .by{width: 100%;}
 nav{
-    width: 33%;
+    grid-column: 1/2;
 }
 p, button{
     font-family: 'Lato', sans-serif;
-}
-h1, h2, h3{
-
 }
