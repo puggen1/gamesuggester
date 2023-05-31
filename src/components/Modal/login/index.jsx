@@ -4,20 +4,21 @@ import {style} from "./style"
 import UserAction from "../UserAction";
 import { Button, TextField } from "@mui/material";  
 import { InputForm } from "../style";
-import styled from "styled-components";
 import { FormButton } from "../../Button";
-import login from "../../../apiHandlers/login";
 import { UserContext } from "../../../context/User";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../../utils/schemas/login";
+import useSendData from "../../../hooks/useSendData";
 const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
+  const {sender} = useSendData()
   const {setLoggedIn} = useContext(UserContext)
   const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(loginSchema)})
   const [responseStatus, setResponseStatus] = useState(false)
   const loginUser = async (data)=>{
-      let response = await login(data.email, data.password)
+      let response = await sender("users/login", "POST", {email: data.email, password: data.password})
+      console.log(response)
       if(!response.token){
         setResponseStatus(true)
       }

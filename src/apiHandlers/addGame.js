@@ -1,17 +1,17 @@
-import apiFetch from "../utils/apiFetcher";
+import useApiFetcher from "../hooks/useApiFetcher";
 
+const addGame = async (title, url, token, time) => {
+  const dataToSend = {
+    title,
+    url,
+    date: time,
+  };
+  const { data, isLoading, isError } = useApiFetcher(
+    "games",
+    dataToSend,
+    token
+  );
+  return { data, isLoading, isError };
+};
 
-
-const addGame = async (title, url, token, time)=>{
-    const data = {
-        title,
-        url,
-        date: time,
-    }
-    let result = await apiFetch("games/add", data, token,
-    )
-    return result
-}
-
-
-export default addGame
+export default addGame;

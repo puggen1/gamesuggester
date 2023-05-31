@@ -1,9 +1,11 @@
-import apiFetch from "../utils/apiFetcher"
+import useApiFetcher from "../hooks/useApiFetcher";
+const register = async (email, password, username) => {
+  const datatoSend = { email, password, username };
+  const { data, isLoading, isError } = useApiFetcher(
+    "users/create",
+    datatoSend
+  );
+  return { data, isLoading, isError };
+};
 
-const register = async (email, password, username)=>{
-    const data = {email, password, username}
-    const response = await apiFetch("users/create", data)
-    return response
-}
-
-export default register
+export default register;

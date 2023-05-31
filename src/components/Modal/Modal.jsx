@@ -1,5 +1,5 @@
 import Background from "./ModalBackground"
-import Modal from "@mui/material/Modal"
+import { Modal } from "@mui/material";
 import Login from "./login";
 import Register from "./register";
 import AddGame from "./addGame";
@@ -17,7 +17,7 @@ const ModalComp = () => {
   }
   else if(modal === "register"){
     return(
-      <Modal open={modalStatus} onClose={()=>{setModalStatus(false)}}>
+      <Modal  open={modalStatus} onClose={()=>{setModalStatus(false)}}>
         <Register key="register" handleModalFunction={setModal} setModalStatus={setModalStatus}/>
       </Modal>
     )

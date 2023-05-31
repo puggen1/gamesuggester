@@ -1,18 +1,12 @@
+import useApiFetcher from "../../hooks/useApiFetcher";
 import { createContext, useState, useEffect } from "react"
-import getGames from "../../apiHandlers/getGames";
 export const GameContext = createContext()
 const Games = ({children}) => {
-  let [games, setGames] = useState([]);
-  const runner = async ()=>{
-    let something = await getGames()
-    setGames(something);
-  }
-  useEffect(()=>{
-    console.log("fetching games....")
-  runner() 
-  }, []);
+  const [url, setUrl] = useState("games")
+  const {data, isLoading, isError, trigger} = useApiFetcher(url)
+
   return (
-    <GameContext.Provider value={{games}}>
+    <GameContext.Provider value={{data, isLoading, isError, trigger}}>
     {children}
     </GameContext.Provider>
   )

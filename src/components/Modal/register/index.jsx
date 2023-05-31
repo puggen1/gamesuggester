@@ -14,13 +14,14 @@ import { InputForm } from "../style";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import registerSchema from "../../../utils/schemas/register";
+import useSendData from "../../../hooks/useSendData";
 const Register = React.forwardRef(({handleModalFunction}, ref)=>{
-
+  const {sender} = useSendData()
   const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(registerSchema)})
 
 
   const registerUser =async (data)=>{
-    let response = await registerUserApiCall(data.email, data.password, data.username)
+    let response = await sender("users/create", "POST", {email: data.email, password: data.password, username: data.username})
     if(response.uid){
       setResponseStatus(false)
       console.log("profile registered")
@@ -35,7 +36,7 @@ const Register = React.forwardRef(({handleModalFunction}, ref)=>{
   const [responseStatus, setResponseStatus] = useState(false)
   const {setModalStatus, setModal} = useContext(ModalContext)
     return (
-      <Box ref={ref} sx={style}>
+      <Box  ref={ref} sx={style}>
          <UserAction handleModalFunction={handleModalFunction}/>
          <InputForm onSubmit={handleSubmit(registerUser)} >
          <TextField  error={responseStatus} fullWidth type="email"  autoComplete="email" name="email"  label="Email" {...register("email")} color="warning" variant="filled" />
