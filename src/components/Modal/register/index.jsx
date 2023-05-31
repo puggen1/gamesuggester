@@ -1,15 +1,11 @@
 import Box from "@mui/material/Box"
 import { TextField } from "@mui/material";
-import Typography from '@mui/material/Typography';
-import ActivateModalButton from "../../Button";
 import React from "react";
 import { style } from "../login/style";
 import UserAction from "../UserAction";
-import { UserContext } from "../../../context/User";
 import { ModalContext } from "../../../context/Modal";
 import { useContext, useState } from "react";
 import { FormButton } from "../../Button";
-import registerUserApiCall from "../../../apiHandlers/register";
 import { InputForm } from "../style";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
