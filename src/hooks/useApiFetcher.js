@@ -12,18 +12,20 @@ const useApiFetcher = (subUrl) => {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
+      'x-requested-with': 'XMLHttpRequest'
+
     },
   };
   const fetcher = async () => {
     try {
       setIsLoading(true);
+      console.log(fullUrl, options)
+
       const response = await fetch(fullUrl, options);
       const result = await response.json();
       setData(result);
-      setIsLoading(false);
     } catch (error) {
       setError(error);
-      setIsLoading(false);
     } finally {
       setIsLoading(false);
     }
