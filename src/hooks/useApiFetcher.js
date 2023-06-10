@@ -19,8 +19,6 @@ const useApiFetcher = (subUrl) => {
   const fetcher = async () => {
     try {
       setIsLoading(true);
-      console.log(fullUrl, options)
-
       const response = await fetch(fullUrl, options);
       const result = await response.json();
       setData(result);
