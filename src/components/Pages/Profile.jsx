@@ -1,8 +1,8 @@
-<<<<<<< Updated upstream
 import { useParams } from "react-router-dom"
 import { GameContext } from "../../context/games";
 import { useContext } from "react";
 import useApiFetcher from "../../hooks/useApiFetcher";
+import ProfileInfo from "../Profile/ProfileInfo";
 const Profile = () => {
   //getting userName... maybe later use id
   const {name} = useParams();
@@ -15,7 +15,7 @@ const Profile = () => {
       {isLoading && <div>Loading...</div>}
       {error && <div>{error}</div>}
       {data[0]?.username && <div>
-        <h1>{data[0].username}</h1>
+       <ProfileInfo username={data.username} avatar={data.avatar}/>
         <h2>Games:</h2>
         {gamesLoading && <div>Loading...</div>}
         {gamesError && <div>{gamesError}</div>}
@@ -27,23 +27,6 @@ const Profile = () => {
             return null})}</div>}</div>}
       </div>
     )
-=======
-import { Avatar, Typography } from '@mui/material'
-import {useState} from 'react'
-import { useParams } from 'react-router-dom'
-import { ProfileInfo } from '../Profile/index.styles'
-const Profile = () => {
-  const {name} = useParams()
-
-  return (
-    <div className='mainContent'>
-    <ProfileInfo>
-      <Avatar sizes='normal'/>
-      <Typography component="h1" variant='h5'>{name}</Typography>
-    </ProfileInfo>
-    </div>
-  )
->>>>>>> Stashed changes
 }
 
 export default Profile
