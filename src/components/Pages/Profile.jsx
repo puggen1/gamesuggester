@@ -12,7 +12,8 @@ const Profile = () => {
   const {data, isLoading, error} = useApiFetcher("/users?username=" + name);
   //getting all games
   const {data: games, isLoading: gamesLoading, error: gamesError} = useContext(GameContext);
-  
+  const storedUsername = window.localStorage.getItem("username");
+  const LoggedIn = window.localStorage.getItem("userStatus") === "true" ? true : false;
   return (
     <div className='mainContent'>
 
@@ -22,7 +23,7 @@ const Profile = () => {
         <InfoSection>
        <ProfileInfo username={data[0].username}/>
        {/* here the settings dropdown will be, and stats*/}
-       <Dropdown/>
+       { (LoggedIn && storedUsername === name) && <Dropdown/>}
        </InfoSection>
        <GamesSection>
         {gamesLoading && <div>Loading...</div>}

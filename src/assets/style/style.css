@@ -13,18 +13,21 @@ body{
     margin: 0 auto;
     flex: 1;
     margin-top: 20px;
+    width: 100%;
 }
 #game{
     margin: auto 0;
     display: flex;
     align-items: flex-start;
     padding-top: 5rem;
-    }
+    @media (max-width: 425px) {
+        padding-top: 2rem;
+    }}
 #gameCards{
     display: flex;
     gap: 4rem 2rem;
     flex-wrap: wrap ;
-    width: 80%;
+    /*width: 80%;*/
     justify-content: center;
     margin: 20px auto;
 }

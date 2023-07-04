@@ -30,7 +30,7 @@ const OuterDropdown = styled.div`
   }
   .showContent {
     width: 100%;
-    height: 150px;
+    height: 250px;
   }
   .dropdownContent > .dropdownItem:last-of-type > button {
     border-radius: 0px 0px 10px 10px;
