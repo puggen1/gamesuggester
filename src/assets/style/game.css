@@ -10,6 +10,11 @@ position: relative;
     visibility: visible;
     opacity: 0.9;
 }
+.profileVersion{
+    width: 75%;
+    height: 250px;
+}
+
 .gameCardInfo{
     position: absolute;
     background-color: #213D46;
@@ -40,8 +45,13 @@ position: relative;
 }
 .cardImage{
     height: 200px;
+    width: 100%;
     position: absolute;
 }
+.profileVersion .cardImage, .profileVersion .cardImage img{
+    height: 250px;
+}
+
 .gameCardInfo .name{
     grid-area: name;
     margin: 15px 0 5px 0;
