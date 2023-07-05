@@ -5,6 +5,7 @@ header{
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    align-items: center;
     @media (max-width: 768px){
         grid-template-columns: 0.5fr 2fr 0.5fr;
     }

@@ -1,2 +1,3 @@
-let cors = "https://noroffcors.onrender.com/"
-export default cors
+let cors = "https://noroffcors.onrender.com/";
+
+export default cors;

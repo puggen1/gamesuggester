@@ -11,6 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import registerSchema from "../../../utils/schemas/register";
 import useSendData from "../../../hooks/useSendData";
+import TextInput from "../../UserInput/TextInput";
 const Register = React.forwardRef(({handleModalFunction}, ref)=>{
   const {sender} = useSendData()
   const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(registerSchema)})
@@ -34,10 +35,11 @@ const Register = React.forwardRef(({handleModalFunction}, ref)=>{
     return (
       <Box  ref={ref} sx={style}>
          <UserAction handleModalFunction={handleModalFunction}/>
-         <InputForm onSubmit={handleSubmit(registerUser)} >
-         <TextField  error={responseStatus} fullWidth type="email"  autoComplete="email" name="email"  label="Email" {...register("email")} color="warning" variant="filled" />
-         <TextField error={responseStatus} fullWidth type="text"  name="display-name" {...register("username")} label="username" color="warning" variant="filled"/>
-         <TextField  error={responseStatus} fullWidth type="password"  autoComplete="new-password" name="password" {...register("password")} label="Password" color="warning" variant="filled" />
+         <InputForm onSubmit={handleSubmit(registerUser)}>
+          <TextInput responseStatus={responseStatus} type="email" name="email" autocomplete="email" label="email" formControll={register("email")} />
+          <TextInput responseStatus={responseStatus} type="username" autocomplete="username" name="username" label="username" formControll={register("username")} />
+          <TextInput responseStatus={responseStatus} type="password" name="new-password" label="password" formControll={register("password")} />
+         
         <FormButton type="submit" text="Register"/>
         </InputForm>
       </Box>

@@ -3,10 +3,10 @@ import cors from "../utils/tempCors";
 
 const useSendData = () => {
   const sender = async (subUrl, method, body, auth) => {
-    const fullUrl = cors + url + subUrl;
+    const fullUrl = url + subUrl;
     const options = {
       method: method,
-      mode: "cors",
+      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },

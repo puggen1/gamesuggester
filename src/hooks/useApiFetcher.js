@@ -5,11 +5,11 @@ const useApiFetcher = (subUrl) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const fullUrl = cors + url + subUrl;
+  const fullUrl = url + subUrl;
   const method = "GET";
   const options = {
     method: method,
-    mode: "cors",
+    mode: "no-cors",
     headers: {
       "Content-Type": "application/json",
       "x-requested-with": "XMLHttpRequest",
