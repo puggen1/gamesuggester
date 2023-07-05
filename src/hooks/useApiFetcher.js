@@ -9,7 +9,7 @@ const useApiFetcher = (subUrl) => {
   const method = "GET";
   const options = {
     method: method,
-    mode: "no-cors",
+    mode: "cors",
     headers: {
       "Content-Type": "application/json",
       "x-requested-with": "XMLHttpRequest",
