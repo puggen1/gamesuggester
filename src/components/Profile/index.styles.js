@@ -48,6 +48,9 @@ const InfoSection = styled.div`
   margin-top: 20px;
   position: sticky;
   top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   @media screen and (max-width: 1024px) {
     width: 50%;
     margin: 0 auto;

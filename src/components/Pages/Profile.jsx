@@ -6,6 +6,7 @@ import ProfileInfo from "../Profile/ProfileInfo";
 import {InfoSection, GamesSection, OuterProfile } from "../Profile/index.styles";
 import GameCard from "../Game/GameCard";
 import Dropdown from "../Dropdown";
+import ProfileStats from "../Stats/ProfileStats";
 const Profile = () => {
   //getting userName... maybe later use id
   const {name} = useParams();
@@ -14,6 +15,8 @@ const Profile = () => {
   const {data: games, isLoading: gamesLoading, error: gamesError} = useContext(GameContext);
   const storedUsername = window.localStorage.getItem("username");
   const LoggedIn = window.localStorage.getItem("userStatus") === "true" ? true : false;
+  
+
   return (
     <div className='mainContent'>
 
@@ -24,6 +27,7 @@ const Profile = () => {
        <ProfileInfo username={data[0].username}/>
        {/* here the settings dropdown will be, and stats*/}
        { (LoggedIn && storedUsername === name) && <Dropdown/>}
+       <ProfileStats gamesAdded={games.filter(game =>{return game.uid === data[0].uid}).length} GamesVoted={"coming soon"} accAge="coming soon" nationality="NO"/>
        </InfoSection>
        <GamesSection>
         {gamesLoading && <div>Loading...</div>}
