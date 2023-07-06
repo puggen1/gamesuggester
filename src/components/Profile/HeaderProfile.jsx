@@ -1,4 +1,4 @@
-import ActivateModalButton from "../Button"
+import {HeaderProfileButton} from "../Button"
 import {Link} from "react-router-dom";
 import ProfileImage from "./ProfileImage";
 import { Button, Typography } from "@mui/material";
@@ -14,7 +14,7 @@ const HeaderProfile = ({user}) => {
         )
     }
   return (
-    <div className="headerProfile" ><ActivateModalButton active={false} toggleModal={setModalStatus} handleModalFunction={setModal}  dataType="login" type="primary modalButton" text="login / register"/></div>
+    <div className="headerProfile" ><HeaderProfileButton dataType="login" type="primary modalButton" /></div>
 
   )
 }

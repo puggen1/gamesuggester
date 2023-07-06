@@ -8,7 +8,7 @@ import { Button, Drawer, Grid } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import { fontSize } from '@mui/system';
 const SideNav = ({openDrawer, setOpenDrawer}) =>{
-  const {setModalStatus} = useContext(ModalContext);
+  const {setModalStatus,setModal} = useContext(ModalContext);
   const {loggedIn, setLoggedIn} = useContext(UserContext)
   return (
     <Drawer anchor='left' open={openDrawer} onClose={()=>{setOpenDrawer(false)}}>
@@ -21,7 +21,7 @@ const SideNav = ({openDrawer, setOpenDrawer}) =>{
         <Link to="/" style={{ textDecoration: 'none' }}> <Button color='warning' sx={{fontSize:25}} onClick={()=>{setOpenDrawer(false)}} variant='text'>Home</Button></Link>
         </Grid>
         <Grid item xs={12}>
-        <Button variant='text' color="warning" sx={{fontSize:25}} onClick={()=>{setModalStatus(true); setModal(loggedIn ? "AddGame" : "login"), console.log(loggedIn); setOpenDrawer(false)}}>add game +</Button>
+        <Button variant='text' color="warning" sx={{fontSize:25}} onClick={()=>{setModalStatus(true); setModal(loggedIn ? "AddGame" : "login"); setOpenDrawer(false)}}>add game +</Button>
         </Grid>
         <Grid item xs={12}>
         {loggedIn ? <Button onClick={()=>{setLoggedIn(false), localStorage.removeItem("username"),localStorage.removeItem("token"), localStorage.setItem("userStatus", false)}} sx={{fontSize:25}} variant="text" color='warning'>Logout</Button> : null}

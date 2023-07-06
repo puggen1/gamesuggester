@@ -1,5 +1,3 @@
-const url = "https://gamesuggestionapi.vercel.app/"
+const url = "https://gamesuggestionapi.vercel.app/";
 
-
-
-export default url
+export default url;
