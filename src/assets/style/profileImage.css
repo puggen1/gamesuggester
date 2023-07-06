@@ -1,6 +1,9 @@
 .profileImage.small{
-    height: 50px;
-    width: 50px;
+    max-height: 50px;
+    max-width: 50px;
+    
+    min-height: 40px;
+    min-width: 40px;
 }
 .profileImage.medium{
     height: 100px;
