@@ -36,9 +36,9 @@ const Register = React.forwardRef(({handleModalFunction}, ref)=>{
       <Box  ref={ref} sx={style}>
          <UserAction handleModalFunction={handleModalFunction}/>
          <InputForm onSubmit={handleSubmit(registerUser)}>
-          <TextInput responseStatus={responseStatus} type="email" name="email" autocomplete="email" label="email" formControll={register("email")} />
-          <TextInput responseStatus={responseStatus} type="username" autocomplete="username" name="username" label="username" formControll={register("username")} />
-          <TextInput responseStatus={responseStatus} type="password" name="new-password" label="password" formControll={register("password")} />
+          <TextInput responseStatus={(responseStatus || errors?.email)} type="email" name="email" autocomplete="email" label="email" formControll={register("email")} />
+          <TextInput responseStatus={(responseStatus || errors?.username)} type="username" autocomplete="username" name="username" label="username" formControll={register("username")} />
+          <TextInput responseStatus={(responseStatus || errors?.password)} type="password" name="new-password" label="password" formControll={register("password")} />
          
         <FormButton type="submit" text="Register"/>
         </InputForm>

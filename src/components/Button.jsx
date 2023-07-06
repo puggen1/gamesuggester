@@ -15,7 +15,7 @@ const ActivateModalButton = ({text, type, dataType,}) => {
 const HeaderProfileButton = ({dataType}) => {
   const {setModalStatus, setModal} = useContext(ModalContext)
   return (
-    <ProfileButton onClick={(e)=>{setModal(dataType), setModalStatus ? setModalStatus(true): null}} ><AccountCircleIcon fontSize="large" /> </ProfileButton>
+    <ProfileButton><AccountCircleIcon onClick={(e)=>{setModal(dataType), setModalStatus ? setModalStatus(true): null}} fontSize="large" /> </ProfileButton>
   )
 }
 const FormButton = ({text, type})=>{

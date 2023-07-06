@@ -10,7 +10,7 @@ import ProfileStats from "../Stats/ProfileStats";
 const Profile = () => {
   //getting userName... maybe later use id
   const {name} = useParams();
-  const {data, isLoading, error} = useApiFetcher("/users?username=" + name);
+  const {data, isLoading, error} = useApiFetcher("users?username=" + name);
   //getting all games
   const {data: games, isLoading: gamesLoading, error: gamesError} = useContext(GameContext);
   const storedUsername = window.localStorage.getItem("username");

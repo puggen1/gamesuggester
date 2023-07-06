@@ -7,6 +7,9 @@ const ProfileButton = styled.div`
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  svg:hover {
+    cursor: pointer;
+  }
 `;
 
 export { ProfileButton };

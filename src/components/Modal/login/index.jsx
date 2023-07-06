@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../../utils/schemas/login";
 import useSendData from "../../../hooks/useSendData";
+import TextInput from "../../UserInput/TextInput";
 const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
   const {sender} = useSendData()
   const {setLoggedIn} = useContext(UserContext)
@@ -36,8 +37,8 @@ const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
   return (<Box sx={style}>
         <UserAction handleModalFunction={handleModalFunction}/>
         <InputForm onSubmit={handleSubmit(loginUser)}>
-        <TextField  error={responseStatus} fullWidth type="email" name="email" autoComplete="username email" inputProps={{autoComplete: "email",}} label="Email" {...register("email")} color="warning" variant="filled" />
-        <TextField  error={responseStatus} fullWidth type="password" name="password" autoComplete="password" inputProps={{autoComplete: "password",}} {...register("password")} label="Password" color="warning" variant="filled" />
+        <TextInput responseStatus={(responseStatus || errors?.email)} type="email" name="email" autocomplete="email" label="email" formControll={register("email")} />
+        <TextInput responseStatus={(responseStatus || errors?.password)} type="password" name="password" autocomplete="current-password" label="password" formControll={register("password")} />
         <FormButton type="submit" text="login"/>
         </InputForm>
         </Box>
