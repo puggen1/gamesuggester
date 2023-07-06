@@ -27,7 +27,7 @@ const Profile = () => {
        <ProfileInfo username={data[0].username}/>
        {/* here the settings dropdown will be, and stats*/}
        { (LoggedIn && storedUsername === name) && <Dropdown/>}
-       <ProfileStats gamesAdded={games.filter(game =>{return game.uid === data[0].uid}).length} GamesVoted={"coming soon"} accAge="coming soon" nationality="NO"/>
+       <ProfileStats gamesAdded={games.filter(game =>{return game.uid === data[0].uid}).length} gamesVoted={"coming soon"} joined="coming soon" nationality="NO"/>
        </InfoSection>
        <GamesSection>
         {gamesLoading && <div>Loading...</div>}
