@@ -18,9 +18,16 @@ const User = (props)=>{
       const usernameChange = (event=>{
         setUsername(event.target.value);
       })
+
+      const Logout = ()=>{
+        setLoggedIn(false);
+        window.localStorage.setItem("userStatus", false);
+        window.localStorage.removeItem("username")
+        window.localStorage.removeItem("token")
+      }
     return(
         <>
-        <UserContext.Provider value={{loggedIn, setLoggedIn, email, emailChange, password, passwordChange, usernameChange, username}}>
+        <UserContext.Provider value={{loggedIn, setLoggedIn, email, emailChange, password, passwordChange, usernameChange, username, Logout}}>
             {props.children}
         </UserContext.Provider>
         </>

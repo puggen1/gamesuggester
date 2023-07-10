@@ -5,15 +5,18 @@ import { useContext } from 'react'
 import { ModalContext } from '../../context/Modal'
 import { UserContext } from '../../context/User'
 import { Button, Drawer,Box } from '@mui/material'
+import NavProfileSection from '../Profile/NavProfileSection'
 import HomeIcon from '@mui/icons-material/Home';
 import CloseIcon from '@mui/icons-material/Close';
+import AddIcon from '@mui/icons-material/Add';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 const SideNav = ({openDrawer, setOpenDrawer}) =>{
   const {setModalStatus,setModal} = useContext(ModalContext);
   const {loggedIn, setLoggedIn} = useContext(UserContext)
   return (
-    <Drawer anchor='left' open={openDrawer} onClose={()=>{setOpenDrawer(false)}}>
+    <Drawer className='sideNav' anchor='left' open={openDrawer} onClose={()=>{setOpenDrawer(false)}}>
     <Nav>
-        <Box sx={{display:"grid", justifyContent:"end"}}>
+        <Box sx={{display:"grid", justifyContent:"end", padding:"0 1rem"}}>
           <Button color='warning' onClick={()=>{setOpenDrawer(false)}} variant='text'><CloseIcon sx={{fontSize:50}}/></Button>
         </Box>
         <Links>
@@ -23,12 +26,12 @@ const SideNav = ({openDrawer, setOpenDrawer}) =>{
         </Link>
         </LinkItem>
         
-        {loggedIn && <LinkItem onClick={()=>{setModalStatus(true); setModal(loggedIn ? "AddGame" : "login"); setOpenDrawer(false)}}>+</LinkItem>}
+        {loggedIn && <LinkItem onClick={()=>{setModalStatus(true); setModal(loggedIn ? "AddGame" : "login"); setOpenDrawer(false)}}><AddIcon fontSize='large' color='warning'/></LinkItem>}
         <LinkItem>
-        cooming soon
+        <EmojiEventsIcon fontSize='large' color='warning'/>
         </LinkItem>
         </Links>
-        {loggedIn ? <Button onClick={()=>{setLoggedIn(false), localStorage.removeItem("username"),localStorage.removeItem("token"), localStorage.setItem("userStatus", false)}} sx={{fontSize:25}} variant="text" color='warning'>Logout</Button> : null}
+        <NavProfileSection loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         
     </Nav>
     </Drawer>

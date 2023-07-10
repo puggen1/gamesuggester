@@ -6,13 +6,20 @@ const Nav = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 400px) {
+    width: 100%;
+  }
 `;
 const Links = muiStyled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(3, 100px)",
+  justifyContent: "space-between",
   gridGap: "1rem",
   padding: "1rem",
   boxSizing: "border-box",
+  "@media screen and (max-width: 400px)": {
+    gridTemplateColumns: "repeat(3, 1fr)",
+  },
 }));
 const LinkItem = muiStyled("div")(({ theme }) => ({
   width: "100%",
@@ -34,6 +41,10 @@ const LinkItem = muiStyled("div")(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  "@media screen and (max-width: 400px)": {
+    minHeight: "50px",
+    minWidth: "50px",
   },
 }));
 export { Nav, Links, LinkItem };
