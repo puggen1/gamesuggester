@@ -2,22 +2,22 @@ import styled from "styled-components";
 import { styled as muiStyled } from "@mui/material";
 const Nav = styled.div`
   background-color: #2f4e5c;
-  width: 400px;
+  width: 350px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 350px) {
     width: 100%;
   }
 `;
 const Links = muiStyled("div")(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(3, 100px)",
+  gridTemplateColumns: "repeat(3, 75px)",
   justifyContent: "space-between",
   gridGap: "1rem",
   padding: "1rem",
   boxSizing: "border-box",
-  "@media screen and (max-width: 400px)": {
+  "@media screen and (max-width: 350px)": {
     gridTemplateColumns: "repeat(3, 1fr)",
   },
 }));
@@ -29,8 +29,8 @@ const LinkItem = muiStyled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  minHeight: "100px",
-  minWidth: "100px",
+  minHeight: "75px",
+  minWidth: "75px",
   "&:hover": {
     backgroundColor: theme.palette.secondary.dark,
     cursor: "pointer",
@@ -42,7 +42,7 @@ const LinkItem = muiStyled("div")(({ theme }) => ({
     justifyContent: "center",
     alignItems: "center",
   },
-  "@media screen and (max-width: 400px)": {
+  "@media screen and (max-width: 350px)": {
     minHeight: "50px",
     minWidth: "50px",
   },

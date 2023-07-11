@@ -55,7 +55,7 @@ nav{
 }
 .sideNav{
     .MuiDrawer-paper{
-    @media (max-width: 400px) {
+    @media (max-width: 350px) {
         width: 100% !important;
     }}
 }

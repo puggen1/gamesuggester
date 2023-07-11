@@ -18,6 +18,11 @@ const LoggedInSection = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
 }));
-const LoggedOutSection = styled(Box)(({ theme }) => ({}));
+const LoggedOutSection = styled(Box)(({ theme }) => ({
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between",
+  padding: "0rem 1rem",
+}));
 
 export { Outer, LoggedInSection, LoggedOutSection };
