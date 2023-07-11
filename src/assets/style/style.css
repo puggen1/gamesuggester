@@ -53,6 +53,12 @@ nav{
     grid-column: 1/2;
     width: 50px
 }
+.sideNav{
+    .MuiDrawer-paper{
+    @media (max-width: 350px) {
+        width: 100% !important;
+    }}
+}
 p, button{
     font-family: 'Lato', sans-serif;
 }
