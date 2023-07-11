@@ -5,7 +5,7 @@ import { ModalContext } from "../../../context/Modal"
 import { Button, Typography } from "@mui/material"
 import NavProfileBanner from "../NavProfileBanner"
 import { Link } from "react-router-dom"
-const NavProfileSection = ({loggedIn}) => {
+const NavProfileSection = ({loggedIn, setOpenDrawer}) => {
     const {Logout} = useContext(UserContext)
     const {setModalStatus, setModal} = useContext(ModalContext)
   return (
@@ -14,7 +14,7 @@ const NavProfileSection = ({loggedIn}) => {
         <LoggedInSection>
          <NavProfileBanner username={localStorage.getItem("username")}/>
          <div style={{display:"flex", justifyContent:"space-between"}}>
-         <Link to={"/profile/" + localStorage.getItem("username")}><Button variant="contained" color="info" sx={{borderRadius:"20px"}}><Typography fontWeight="500">view profile</Typography></Button></Link>
+         <Link to={"/profile/" + localStorage.getItem("username")}><Button onClick={()=>{setOpenDrawer(false)}} variant="contained" color="info" sx={{borderRadius:"20px"}}><Typography fontWeight="500">view profile</Typography></Button></Link>
          <Button variant="contained" color="info" sx={{borderRadius:"20px"}} onClick={()=>{Logout()}}><Typography fontWeight="500">Logout</Typography></Button>
          </div>
         </LoggedInSection>

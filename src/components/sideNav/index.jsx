@@ -9,7 +9,7 @@ import NavProfileSection from '../Profile/NavProfileSection'
 import HomeIcon from '@mui/icons-material/Home';
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import ControllerIcon from '@mui/icons-material/SportsEsports';
 const SideNav = ({openDrawer, setOpenDrawer}) =>{
   const {setModalStatus,setModal} = useContext(ModalContext);
   const {loggedIn, setLoggedIn} = useContext(UserContext)
@@ -28,10 +28,10 @@ const SideNav = ({openDrawer, setOpenDrawer}) =>{
         
         {loggedIn && <LinkItem onClick={()=>{setModalStatus(true); setModal(loggedIn ? "AddGame" : "login"); setOpenDrawer(false)}}><AddIcon fontSize='large' color='warning'/></LinkItem>}
         <LinkItem>
-        <EmojiEventsIcon fontSize='large' color='warning'/>
+        <ControllerIcon fontSize='large' color='warning'/>
         </LinkItem>
         </Links>
-        <NavProfileSection loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+        <NavProfileSection loggedIn={loggedIn} setLoggedIn={setLoggedIn} setOpenDrawer={setOpenDrawer}/>
         
     </Nav>
     </Drawer>
