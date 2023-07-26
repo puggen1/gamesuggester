@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import url from "../utils/baseUrl";
-import cors from "../utils/tempCors";
-const useApiFetcher = (subUrl) => {
+const useApiFetcher = (subUrl, auth) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,6 +14,9 @@ const useApiFetcher = (subUrl) => {
       "x-requested-with": "XMLHttpRequest",
     },
   };
+  if (auth) {
+    options.headers.Authorization = "Bearer " + auth;
+  }
   const fetcher = async () => {
     try {
       setIsLoading(true);
