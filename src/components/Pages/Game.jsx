@@ -6,9 +6,9 @@ import GameImage from "../Game/gameImage";
 import { GamePage } from "../Game/index.styles";
 import useApiFetcher from "../../hooks/useApiFetcher";
 const Game =  () => {
-  const {name} = useParams()
+  const {id} = useParams()
   const [game, setGame] = useState({})
-  const {data, isLoading, isError} = useApiFetcher("games?title="+ name)
+  const {data, isLoading, isError} = useApiFetcher("games/" + id)
 
   useEffect(()=>{
     console.log(data)
@@ -22,7 +22,7 @@ const Game =  () => {
       {isError && <p>Error...</p>}
       {(!isLoading && !isError) && 
       <GamePage>
-      <GameInfo name={game.name} user={game.username} description={game.description ? game.description : undefined}  steam={game.url}/>
+      <GameInfo title={game.title}  description={game.description ? game.description : undefined}  steam={game.url}/>
       <GameImage src={game.image} alt={`
       ${game.name}'s image
      `}/>

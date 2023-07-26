@@ -41,7 +41,7 @@ function App() {
       <Routes>
         <Route index element={<Frontpage/>}/>
         <Route path="profile/:name" element={<Profile user={user}/>}/>
-        <Route path="game/:name" element={<Game />}/>
+        <Route path="game/:id" element={<Game />}/>
         <Route path="*" element={<h1>404 not found</h1>}/>
       </Routes>
       <Footer/>
