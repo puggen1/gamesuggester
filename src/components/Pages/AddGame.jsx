@@ -1,10 +1,12 @@
-import { Autocomplete, TextField,Button, Typography } from "@mui/material"
+import { Autocomplete, TextField,Button, Typography, useTheme } from "@mui/material"
 import { OuterAddGame } from "../Game/index.styles"
 import useApiFetcher from "../../hooks/useApiFetcher"
 import { useEffect, useState } from "react"
 import SteamGameSearch from "../SteamGameSearch"
 import AddGameCard from "../Game/AddGameCard"
+import { Clear, Check} from "@mui/icons-material"
 const AddGame = () => {
+  const theme = useTheme()
     const token = localStorage.getItem("token")
     const {data, isLoading, error} = useApiFetcher("steamgames", token)
     const [chosenGame, setChosenGame] = useState(null)
@@ -30,6 +32,12 @@ const AddGame = () => {
         setSingleGameUrl("steamgames/"+chosenGame.appID)
       }
     }, [chosenGame])
+    const cancel = ()=>{
+      setChosenGame(null)
+    }
+    const confirm = ()=>{
+      console.log(chosenGameData)
+    }
     return (
     <OuterAddGame>
         {isLoading && <p>loading</p>}
@@ -47,8 +55,10 @@ const AddGame = () => {
         </div>}
 {chosenGame && <div className="confirm">
       <Typography variant="h5" component="h2" color="white">3. Confirm</Typography>
-          <Button>Cancel</Button>
-          <Button>Add game</Button>
+      <div className="actionButtons">
+          <Button sx={{backgroundColor:theme.palette.secondary.main, width:"150px"}} startIcon={<Clear color="warning"/>} color="warning" onClick={cancel}>Cancel</Button>
+          <Button sx={{backgroundColor:theme.palette.secondary.main, width:"150px"}} startIcon={<Check color="warning"/>} color="warning" onClick={confirm}>Add game</Button>
+          </div>
         </div>}
           </>
         }

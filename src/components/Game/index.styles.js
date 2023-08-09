@@ -30,5 +30,12 @@ const OuterAddGame = muiStyled("div")(({ theme }) => ({
     marginTop: "3rem",
     gap: "1.5rem",
   },
+  "& .confirm": {
+    "& .actionButtons": {
+      display: "flex",
+      flexDirection: "row",
+      gap: "2rem",
+    },
+  },
 }));
 export { GamePage, OuterAddGame };
