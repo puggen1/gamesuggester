@@ -3,11 +3,14 @@ import { OuterAddGame } from "../Game/index.styles"
 import useApiFetcher from "../../hooks/useApiFetcher"
 import { useEffect, useState } from "react"
 import SteamGameSearch from "../SteamGameSearch"
+import AddGameCard from "../Game/AddGameCard"
 const AddGame = () => {
     const token = localStorage.getItem("token")
-    const {data, isLoading, error} = useApiFetcher("steamgames", token) 
+    const {data, isLoading, error} = useApiFetcher("steamgames", token)
     const [chosenGame, setChosenGame] = useState(null)
+    const [singleGameUrl, setSingleGameUrl] = useState("") 
     const [noDuplicates, setNoDuplicates] = useState()
+    const {data: chosenGameData, isLoading: chosenGameLoadingData, error: chosenGameErrorData} = useApiFetcher(singleGameUrl, token)
     //removes duplicates from the data
     useEffect(() => {
       if(data){
@@ -22,6 +25,11 @@ const AddGame = () => {
         }))
       }
     }, [data])
+    useEffect(() => {
+      if(chosenGame){
+        setSingleGameUrl("steamgames/"+chosenGame.appID)
+      }
+    }, [chosenGame])
     return (
     <OuterAddGame>
         {isLoading && <p>loading</p>}
@@ -35,6 +43,7 @@ const AddGame = () => {
         </div>
         {chosenGame && <div className="validate">
           <Typography variant="h5" component="h2" color="white">2. Look trough the game</Typography>
+          <AddGameCard gameData={chosenGameData}/>
         </div>}
 {chosenGame && <div className="confirm">
       <Typography variant="h5" component="h2" color="white">3. Confirm</Typography>

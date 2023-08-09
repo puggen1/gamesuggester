@@ -27,6 +27,8 @@ const OuterAddGame = muiStyled("div")(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginTop: "3rem",
+    gap: "1.5rem",
   },
 }));
 export { GamePage, OuterAddGame };
