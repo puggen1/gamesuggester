@@ -1,6 +1,7 @@
-import { Autocomplete, TextField,Button, Typography, useTheme } from "@mui/material"
+import {Button, Typography, useTheme } from "@mui/material"
 import { OuterAddGame } from "../Game/index.styles"
 import useApiFetcher from "../../hooks/useApiFetcher"
+import useSendData from "../../hooks/useSendData"
 import { useEffect, useState } from "react"
 import SteamGameSearch from "../SteamGameSearch"
 import AddGameCard from "../Game/AddGameCard"
@@ -13,6 +14,7 @@ const AddGame = () => {
     const [singleGameUrl, setSingleGameUrl] = useState("") 
     const [noDuplicates, setNoDuplicates] = useState()
     const {data: chosenGameData, isLoading: chosenGameLoadingData, error: chosenGameErrorData} = useApiFetcher(singleGameUrl, token)
+    const {sender} = useSendData()
     //removes duplicates from the data
     useEffect(() => {
       if(data){
@@ -35,8 +37,10 @@ const AddGame = () => {
     const cancel = ()=>{
       setChosenGame(null)
     }
-    const confirm = ()=>{
+    const confirm = async ()=>{
       console.log(chosenGameData)
+      const response = await sender("games/add", "POST", {id:chosenGameData.appID}, token)
+      console.log(response)
     }
     return (
     <OuterAddGame>
@@ -51,9 +55,9 @@ const AddGame = () => {
         </div>
         {chosenGame && <div className="validate">
           <Typography variant="h5" component="h2" color="white">2. Look trough the game</Typography>
-          <AddGameCard gameData={chosenGameData}/>
+          {!chosenGameLoadingData && <AddGameCard gameData={chosenGameData}/>}
         </div>}
-{chosenGame && <div className="confirm">
+{(chosenGame && !chosenGameLoadingData) && <div className="confirm">
       <Typography variant="h5" component="h2" color="white">3. Confirm</Typography>
       <div className="actionButtons">
           <Button sx={{backgroundColor:theme.palette.secondary.main, width:"150px"}} startIcon={<Clear color="warning"/>} color="warning" onClick={cancel}>Cancel</Button>
