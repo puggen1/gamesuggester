@@ -1,8 +1,5 @@
-import { useState } from "react";
 import url from "../utils/baseUrl";
 const useSendData = () => {
-  //make more similar to useapi fetcher?
-  const [result, setResult] = useState({});
   const sender = async (subUrl, method, body, auth) => {
     const fullUrl = url + subUrl;
     const options = {
@@ -19,11 +16,11 @@ const useSendData = () => {
     }
     try {
       const response = await fetch(fullUrl, options);
-      setResult(await response.json());
+      const result = await response.json();
+      return result;
     } catch (formattedError) {
-      setResult(formattedError);
+      return formattedError;
     }
-    return result;
   };
   return { sender };
 };

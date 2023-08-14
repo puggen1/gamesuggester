@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Nav, Links, LinkItem } from './index.styles'
 import { useContext } from 'react'
 import { ModalContext } from '../../context/Modal'
@@ -13,6 +13,7 @@ import ControllerIcon from '@mui/icons-material/SportsEsports';
 const SideNav = ({openDrawer, setOpenDrawer}) =>{
   const {setModalStatus,setModal} = useContext(ModalContext);
   const {loggedIn, setLoggedIn} = useContext(UserContext)
+  const navigate = useNavigate()
   return (
     <Drawer className='sideNav' anchor='left' open={openDrawer} onClose={()=>{setOpenDrawer(false)}}>
     <Nav>
@@ -26,7 +27,7 @@ const SideNav = ({openDrawer, setOpenDrawer}) =>{
         </Link>
         </LinkItem>
         
-        {loggedIn && <LinkItem onClick={()=>{setModalStatus(true); setModal(loggedIn ? "AddGame" : "login"); setOpenDrawer(false)}}><AddIcon fontSize='large' color='warning'/></LinkItem>}
+        {loggedIn && <LinkItem onClick={()=>{setModalStatus(true); setModal(loggedIn ? navigate("/game/add") : "login"); setOpenDrawer(false)}}><AddIcon fontSize='large' color='warning'/></LinkItem>}
         <LinkItem>
         <ControllerIcon fontSize='large' color='warning'/>
         </LinkItem>
