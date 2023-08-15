@@ -35,6 +35,13 @@ const OuterAddGame = muiStyled("div")(({ theme }) => ({
       display: "flex",
       flexDirection: "row",
       gap: "2rem",
+      "@media screen and (max-width: 475px)": {
+        gap: "1rem",
+        flexDirection: "column",
+        "& button": {
+          maxWidth: "90%",
+        },
+      },
     },
   },
 }));
