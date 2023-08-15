@@ -67,7 +67,7 @@ position: relative;
 .gameCardInfo .name{
     grid-area: name;
     margin: 15px 0 5px 0;
-}
+} 
 .gameCardInfo .userLink{
     grid-area: username;
     margin-top: 0px;

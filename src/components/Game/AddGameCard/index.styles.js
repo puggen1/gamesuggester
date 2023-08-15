@@ -40,6 +40,15 @@ const OuterAddGameCard = styled("div")(({ theme }) => ({
     maxHeight: "200px",
     objectFit: "cover",
   },
+  "@media screen and (max-width: 768px)": {
+    maxWidth: "90%",
+    gridTemplateAreas: `"title title title title" ". . . link" "img img img img" "desc desc desc desc" `,
+    gridTemplateRows: "auto auto 2fr",
+  },
+  "@media screen and (max-width: 500px)": {
+    gridTemplateAreas: `"title title title title" ". . link link" "img img img img" "desc desc desc desc" `,
+    padding: "2rem",
+  },
 }));
 
 export { OuterAddGameCard };
