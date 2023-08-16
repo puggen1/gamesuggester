@@ -7,15 +7,17 @@ import AddGameCard from "../AddGameCard"
 import { Clear, Check, Close} from "@mui/icons-material"
 import { Link } from "react-router-dom"
 import ConfirmGameSkeleton from "../../PlaceholderSkeleton/ConfirmGameSkeleton"
-
+import AlreadyAdded from "../AlreadyAdded"
 const AddGame = ({data}) => {
     const theme = useTheme()
     const token = localStorage.getItem("token")
     const [chosenGame, setChosenGame] = useState(null)
     const [singleGameUrl, setSingleGameUrl] = useState("") 
+    const [duplicateUrl, setDuplicateUrl] = useState("");
     const [noDuplicates, setNoDuplicates] = useState()
     const [success, setSuccess] = useState(false);
     const {data: chosenGameData, isLoading: chosenGameLoadingData, error: chosenGameErrorData} = useApiFetcher(singleGameUrl, token)
+    const {data: isDuplicateData, isLoading: isDuplicateDataLoading, error: isDuplicateDataError} = useApiFetcher(duplicateUrl)
     const {sender} = useSendData()
     
     //removes duplicates from the data
@@ -34,7 +36,9 @@ const AddGame = ({data}) => {
     }, [data])
     useEffect(() => {
       if(chosenGame){
-        setSingleGameUrl("steamgames/"+chosenGame.appID)
+        //check if game already excists...
+        setDuplicateUrl("games/" + chosenGame.appID);
+        setSingleGameUrl("steamgames/"+chosenGame.appID);
       }
     }, [chosenGame])
     const cancel = ()=>{
@@ -42,7 +46,6 @@ const AddGame = ({data}) => {
       setSuccess(false)
     }
     const confirm = async ()=>{
-      console.log(chosenGameData)
       const response = await sender("games/add", "POST", {id:chosenGameData.appID}, token)
       console.log(response)
       if(response.success){
@@ -52,6 +55,7 @@ const AddGame = ({data}) => {
         setSuccess(false)
       }
     }
+    console.log(isDuplicateData)
   return (
     (noDuplicates && noDuplicates.length > 0) &&
         <>
@@ -62,9 +66,10 @@ const AddGame = ({data}) => {
         </div>
         {chosenGame && <div className="validate">
           <Typography variant="h5" component="h2" color="white">2. Look trough the game</Typography>
-          {chosenGameLoadingData &&  <ConfirmGameSkeleton/>}
+          {(chosenGameLoadingData && isDuplicateDataLoading) &&  <ConfirmGameSkeleton/>}
+          {(isDuplicateData.id && !isDuplicateDataLoading) && <AlreadyAdded/>}
           {chosenGameErrorData && <p>test error</p>}
-          {!chosenGameLoadingData && <AddGameCard gameData={chosenGameData}/>}
+          {(!chosenGameLoadingData && !isDuplicateData.found) && <AddGameCard gameData={chosenGameData}/>}
         </div>}
 {(chosenGame && !chosenGameLoadingData) && <div className="confirm">
       <Typography variant="h5" component="h2" color="white">3. Confirm</Typography>

@@ -6,9 +6,9 @@ import GameImage from "../Game/gameImage";
 import { GamePage } from "../Game/index.styles";
 import useApiFetcher from "../../hooks/useApiFetcher";
 const Game =  () => {
-  const {name} = useParams()
+  const {id} = useParams()
   const [game, setGame] = useState({})
-  const {data, isLoading, isError} = useApiFetcher("games?title="+ name)
+  const {data, isLoading, isError} = useApiFetcher("games/" + id)
 
   useEffect(()=>{
     console.log(data)
