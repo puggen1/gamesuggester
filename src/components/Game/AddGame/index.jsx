@@ -55,7 +55,6 @@ const AddGame = ({data}) => {
         setSuccess(false)
       }
     }
-    console.log(isDuplicateData)
   return (
     (noDuplicates && noDuplicates.length > 0) &&
         <>
@@ -67,11 +66,11 @@ const AddGame = ({data}) => {
         {chosenGame && <div className="validate">
           <Typography variant="h5" component="h2" color="white">2. Look trough the game</Typography>
           {(chosenGameLoadingData && isDuplicateDataLoading) &&  <ConfirmGameSkeleton/>}
-          {(isDuplicateData.id && !isDuplicateDataLoading) && <AlreadyAdded/>}
+          {(isDuplicateData.found && !isDuplicateDataLoading) && <AlreadyAdded data={isDuplicateData}/>}
           {chosenGameErrorData && <p>test error</p>}
           {(!chosenGameLoadingData && !isDuplicateData.found) && <AddGameCard gameData={chosenGameData}/>}
         </div>}
-{(chosenGame && !chosenGameLoadingData) && <div className="confirm">
+{((chosenGame && !chosenGameLoadingData) && (!isDuplicateData.found && !isDuplicateDataLoading)) && <div className="confirm">
       <Typography variant="h5" component="h2" color="white">3. Confirm</Typography>
       <div className="actionButtons">
           <Button sx={{backgroundColor:theme.palette.secondary.main, width:"150px"}} startIcon={<Clear color="warning"/>} color="warning" onClick={cancel}>Cancel</Button>
