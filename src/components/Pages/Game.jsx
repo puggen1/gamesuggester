@@ -11,7 +11,6 @@ const Game =  () => {
   const {data, isLoading, isError} = useApiFetcher("games/" + id)
 
   useEffect(()=>{
-    console.log(data)
     if(data && (!isLoading && !isError)){
       setGame(data)
     }},[data, isLoading, isError])

@@ -19,7 +19,6 @@ const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
   const [responseStatus, setResponseStatus] = useState(false)
   const loginUser = async (data)=>{
       let response = await sender("users/login", "POST", {email: data.email, password: data.password})
-      console.log(response)
       if(!response.token){
         setResponseStatus(true)
       }

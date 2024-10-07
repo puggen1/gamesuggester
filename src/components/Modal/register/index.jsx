@@ -16,17 +16,15 @@ const Register = React.forwardRef(({handleModalFunction}, ref)=>{
   const {sender} = useSendData()
   const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(registerSchema)})
 
-
+  
   const registerUser =async (data)=>{
     let response = await sender("users/create", "POST", {email: data.email, password: data.password, username: data.username})
     if(response.uid){
       setResponseStatus(false)
-      console.log("profile registered")
       setModal("login")
     }
     else{
       setResponseStatus(true)
-      console.log(response.message)
     }
   }
 

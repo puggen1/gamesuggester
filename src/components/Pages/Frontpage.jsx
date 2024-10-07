@@ -10,7 +10,6 @@ const {data, isLoading, isError} = useContext(GameContext);
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error...</p>}
       {(!isLoading && !isError) && data.map(game =>{
-        console.log(game)
       return <GameCard key={game.id} title={game.title} user={game.addedBy?.username} url={game.url} image={game.image} added={game.createdAt} id={game.id}/>
     })}
     </div>

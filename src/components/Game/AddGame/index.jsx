@@ -8,6 +8,11 @@ import { Clear, Check, Close} from "@mui/icons-material"
 import { Link } from "react-router-dom"
 import ConfirmGameSkeleton from "../../PlaceholderSkeleton/ConfirmGameSkeleton"
 import AlreadyAdded from "../AlreadyAdded"
+/**
+ * 
+ * @param {array} data, all the steam games fetched on addgame page 
+ * @description  
+ */
 const AddGame = ({data}) => {
     const theme = useTheme()
     const token = localStorage.getItem("token")
@@ -41,13 +46,19 @@ const AddGame = ({data}) => {
         setSingleGameUrl("steamgames/"+chosenGame.appID);
       }
     }, [chosenGame])
+    /**
+     * @description cancels the procces, removing the states
+     */
     const cancel = ()=>{
       setChosenGame(null)
       setSuccess(false)
     }
+
+    /**
+     * @description adds the game to the database, either add new or adds the user to the liked array
+     */
     const confirm = async ()=>{
       const response = await sender("games/add", "POST", {id:chosenGameData.appID}, token)
-      console.log(response)
       if(response.success){
         setSuccess(true)
       }
