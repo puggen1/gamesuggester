@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import url from "../utils/baseUrl";
 const useApiFetcher = (subUrl, auth) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const fullUrl = url + subUrl;
+  const fullUrl = import.meta.env.VITE_BASE_URL + subUrl;
   const method = "GET";
   const options = {
     method: method,

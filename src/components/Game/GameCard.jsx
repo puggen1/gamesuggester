@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import GameCardImage from './GameCardImage'
 import GameCardInfo from './GameCardInfo'
 import "../../assets/style/game.css"
-const GameCard = ({name, image, user, added, url, profile}) => {
+const GameCard = ({title, image, user, added, url, profile, id}) => {
   return (
-    <Link to={`/game/${name}`} className={profile ? 'gameCard profileVersion' : "gameCard"}>
+    <Link to={`/game/${id}`} className={profile ? 'gameCard profileVersion' : "gameCard"}>
         <GameCardImage image={image} />
-        <GameCardInfo  name={name} username={user} added={added} url={url} />
+        <GameCardInfo  name={title} username={user} added={added} url={url} />
     </Link>
   )
 }

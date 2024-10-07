@@ -22,9 +22,9 @@ const Game =  () => {
       {isError && <p>Error...</p>}
       {(!isLoading && !isError) && 
       <GamePage>
-      <GameInfo name={game.name} user={game.username} description={game.description ? game.description : undefined}  steam={game.url}/>
+      <GameInfo name={game.title} user={game.addedBy?.username} description={game.description ? game.description : undefined}  steam={game.url}/>
       <GameImage src={game.image} alt={`
-      ${game.name}'s image
+      ${game.title}'s image
      `}/>
      </GamePage> 
 }    

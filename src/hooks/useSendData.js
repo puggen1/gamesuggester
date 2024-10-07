@@ -1,7 +1,6 @@
-import url from "../utils/baseUrl";
 const useSendData = () => {
   const sender = async (subUrl, method, body, auth) => {
-    const fullUrl = url + subUrl;
+    const fullUrl = import.meta.env.VITE_BASE_URL + subUrl;
     const options = {
       method: method,
       mode: "cors",
