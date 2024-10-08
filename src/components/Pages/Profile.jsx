@@ -35,7 +35,7 @@ const Profile = () => {
         {games && <div className="games" id="gameCards">
           {games.map((game) => {
             if(game.uid === data[0].uid){
-              return <GameCard key={game.name} name={game.name} image={game.image} user={game.username} added={game.added} url={game.url} profile="true"/>
+              return <GameCard key={game.id} title={game.title} image={game.image}  url={game.url} profile="true"/>
             }
             return null})}</div>} </GamesSection> </OuterProfile>}
       </div>
