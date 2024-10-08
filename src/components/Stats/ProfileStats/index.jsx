@@ -4,7 +4,6 @@ import { StatBox } from '../index.styles'
 import Stat from '../Stat'
 import CountryFlag from '../../CountryFlag'
 const ProfileStats = ({gamesAdded, gamesVoted, joined, nationality}) => {
-    console.log(typeof gamesAdded)
   return (
     <OuterProfileStats>
       { (typeof gamesAdded === 'number') &&  <StatBox>

@@ -11,7 +11,6 @@ const Game =  () => {
   const {data, isLoading, isError} = useApiFetcher("games/" + id)
 
   useEffect(()=>{
-    console.log(data)
     if(data && (!isLoading && !isError)){
       setGame(data)
     }},[data, isLoading, isError])
@@ -22,9 +21,9 @@ const Game =  () => {
       {isError && <p>Error...</p>}
       {(!isLoading && !isError) && 
       <GamePage>
-      <GameInfo title={game.title}  description={game.description ? game.description : undefined}  steam={game.url}/>
+      <GameInfo title={game.title} user={game.addedBy?.username} description={game.description ? game.description : undefined}  steam={game.url}/>
       <GameImage src={game.image} alt={`
-      ${game.name}'s image
+      ${game.title}'s image
      `}/>
      </GamePage> 
 }    

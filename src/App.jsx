@@ -12,6 +12,7 @@ import "./assets/style/style.css"
 import "./assets/style/buttons.css"
 import { theme } from "./assets/style/theme";
 import "@fontsource/lato";
+import AddGame from "./components/Pages/AddGame";
 function App() {
   /*
   /modal controls
@@ -42,6 +43,7 @@ function App() {
         <Route index element={<Frontpage/>}/>
         <Route path="profile/:name" element={<Profile user={user}/>}/>
         <Route path="game/:id" element={<Game />}/>
+        <Route path="game/add" element={<AddGame/>}/>
         <Route path="*" element={<h1>404 not found</h1>}/>
       </Routes>
       <Footer/>
