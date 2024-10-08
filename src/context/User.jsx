@@ -1,9 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 
 export const UserContext = createContext();
 
 const User = (props)=>{
+ 
     const localstorageStatus = window.localStorage.getItem("userStatus")
     const [loggedIn, setLoggedIn] = useState(localstorageStatus === "true" ? true: false);
     const [email, setEmail] = useState("");

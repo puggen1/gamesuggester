@@ -13,19 +13,33 @@ import "./assets/style/buttons.css"
 import { theme } from "./assets/style/theme";
 import "@fontsource/lato";
 import AddGame from "./components/Pages/AddGame";
+import useSendData from "./hooks/useSendData";
+
 function App() {
   /*
   /modal controls
   */
   let [user, setUser] = useState(null);
-  const {loggedIn, setLoggedIn} = useContext(UserContext)
+  const {loggedIn, setLoggedIn, Logout} = useContext(UserContext)
+  const {sender} = useSendData()
+  
   useEffect(()=>{
-    if(loggedIn){
-      console.log("dette skal kjøre når logget in")
+
+    if(loggedIn){  
       let token = localStorage.getItem("token");
       let username = localStorage.getItem("username");
       let profilePicture = "https://api.dicebear.com/5.x/initials/svg?backgroundType=gradientLinear&radius=10&seed=" + username;
-      setUser({username, userStatus:loggedIn, token, profilePicture});
+      const test = async ()=>{
+        const response = await sender("users/refreshToken", "POST", {}, token)
+      if(response?.error){
+        setUser(null);
+        Logout()
+      }
+      else{
+        setUser({username, userStatus:loggedIn, token, profilePicture});
+      }
+      }
+      test()
     }
     else{
       setUser(null);
