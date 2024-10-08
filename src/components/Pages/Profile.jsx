@@ -15,11 +15,8 @@ const Profile = () => {
   const {data: games, isLoading: gamesLoading, error: gamesError} = useContext(GameContext);
   const storedUsername = window.localStorage.getItem("username");
   const LoggedIn = window.localStorage.getItem("userStatus") === "true" ? true : false;
-  
-
   return (
     <div className='mainContent'>
-
       {isLoading && <div>Loading...</div>}
       {error && <div>{error}</div>}
       {data[0]?.username && <OuterProfile>
@@ -27,15 +24,15 @@ const Profile = () => {
        <ProfileInfo username={data[0].username}/>
        {/* here the settings dropdown will be, and stats*/}
        { (LoggedIn && storedUsername === name) && <Dropdown/>}
-       <ProfileStats gamesAdded={games.filter(game =>{return game.uid === data[0].uid}).length}/>
+       <ProfileStats gamesAdded={games.filter(game =>{return game.addedBy.uid === data[0].uid}).length}/>
        </InfoSection>
        <GamesSection>
         {gamesLoading && <div>Loading...</div>}
         {gamesError && <div>{gamesError}</div>}
         {games && <div className="games" id="gameCards">
           {games.map((game) => {
-            if(game.uid === data[0].uid){
-              return <GameCard key={game.id} title={game.title} image={game.image}  url={game.url} profile="true"/>
+            if(game.addedBy?.uid === data[0].uid){
+              return <GameCard key={game.id} user={game.addedBy?.username} id={game.id} title={game.title} image={game.image}  url={game.url} profile="true"/>
             }
             return null})}</div>} </GamesSection> </OuterProfile>}
       </div>
