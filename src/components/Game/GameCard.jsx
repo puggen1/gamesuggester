@@ -7,7 +7,7 @@ const GameCard = ({title, image, user, added, url, profile, id}) => {
   return (
     <Link to={`/game/${id}`} className={profile ? 'gameCard profileVersion' : "gameCard"}>
         <GameCardImage image={image} />
-        <GameCardInfo  name={title} username={user} added={added} url={url} />
+        <GameCardInfo  title={title} username={user} added={added} url={url} />
     </Link>
   )
 }
