@@ -14,7 +14,7 @@ import useSendData from "../../../hooks/useSendData";
 import TextInput from "../../UserInput/TextInput";
 const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
   const {sender} = useSendData()
-  const {setLoggedIn} = useContext(UserContext)
+  const {setLoggedIn, token, refreshToken} = useContext(UserContext)
   const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(loginSchema)})
   const [responseStatus, setResponseStatus] = useState(false)
   const loginUser = async (data)=>{
@@ -25,6 +25,9 @@ const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
       else{
         setResponseStatus(false);
         localStorage.setItem("token", response.token);
+        localStorage.setItem("refreshToken", response.refreshToken);
+        refreshToken.current = response.refreshToken
+        token.current = response.token
         localStorage.setItem("username", response.username);
         localStorage.setItem("userStatus", true)
         setLoggedIn(true)
