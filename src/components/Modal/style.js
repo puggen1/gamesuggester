@@ -10,7 +10,8 @@ export let InnerModal = styled.div`
 export let InputForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+  padding: 1rem;
   height: 100%;
   max-width: 70%;
   margin: 0 auto;

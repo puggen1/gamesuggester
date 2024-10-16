@@ -13,34 +13,22 @@ import loginSchema from "../../../utils/schemas/login";
 import useSendData from "../../../hooks/useSendData";
 import TextInput from "../../UserInput/TextInput";
 const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
-  const {sender} = useSendData()
-  const {setLoggedIn, token, refreshToken} = useContext(UserContext)
+  const {setLoggedIn, token, refreshToken, loginUser, responseStatus} = useContext(UserContext)
   const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(loginSchema)})
-  const [responseStatus, setResponseStatus] = useState(false)
-  const loginUser = async (data)=>{
-      let response = await sender("users/login", "POST", {email: data.email, password: data.password})
-      if(!response.token){
-        setResponseStatus(true)
-      }
-      else{
-        setResponseStatus(false);
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("refreshToken", response.refreshToken);
-        refreshToken.current = response.refreshToken
-        token.current = response.token
-        localStorage.setItem("username", response.username);
-        localStorage.setItem("userStatus", true)
-        setLoggedIn(true)
-        setModalStatus(false)
-      
-      }
+
+
+  const loginAction =async (data)=>{
+    const response = await loginUser(data)
+    if(response){
+      setModalStatus(false)
+    }
   }
 
   return (<Box sx={style}>
         <UserAction handleModalFunction={handleModalFunction}/>
-        <InputForm onSubmit={handleSubmit(loginUser)}>
-        <TextInput responseStatus={(responseStatus || errors?.email)} type="email" name="email" autocomplete="email" label="email" formControll={register("email")} />
-        <TextInput responseStatus={(responseStatus || errors?.password)} type="password" name="password" autocomplete="current-password" label="password" formControll={register("password")} />
+        <InputForm onSubmit={handleSubmit(loginAction)}>
+        <TextInput responseStatus={(responseStatus || errors?.email)} error={errors?.email} type="email" name="email" autocomplete="email" label="email" formControll={register("email")} />
+        <TextInput responseStatus={(responseStatus || errors?.password)} error={errors?.password} type="password" name="password" autocomplete="current-password" label="password" formControll={register("password")} />
         <FormButton type="submit" text="login"/>
         </InputForm>
         </Box>

@@ -4,11 +4,12 @@
     justify-content: flex-end;
     display:flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     text-decoration: none;
     color: #E9E9E9;
     gap: 10px;
     max-width: 100%;
+    margin-left: auto;
 }
 @media screen and (max-width: 768px){
     .headerProfile > p{

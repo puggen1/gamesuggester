@@ -26,9 +26,14 @@ const User = (props)=>{
         }
       })()
     }},[])
+
+    /**
+     * for login and logout
+     */
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+    const [responseStatus, setResponseStatus] = useState(false)
     const emailChange = (event)=>{
         setEmail(event.target.value)
       }
@@ -39,16 +44,50 @@ const User = (props)=>{
         setUsername(event.target.value);
       })
 
-      const Logout = ()=>{
+      const logout = ()=>{
         setLoggedIn(false)
         window.localStorage.setItem("userStatus", false);
         window.localStorage.removeItem("username")
         window.localStorage.removeItem("token")
         window.localStorage.removeItem("refreshToken")
       }
+      const loginUser = async (data)=>{
+        let response = await sender("users/login", "POST", {email: data.email, password: data.password})
+        if(!response.token){
+          setResponseStatus(true)
+          return false
+        }
+        else{
+          setResponseStatus(false);
+          localStorage.setItem("token", response.token);
+          token.current = response.token
+
+          localStorage.setItem("refreshToken", response.refreshToken);
+          refreshToken.current = response.refreshToken
+
+          localStorage.setItem("username", response.username);
+          localStorage.setItem("userStatus", true)
+          setLoggedIn(true)
+          return true
+        }
+    }
+    const registerUser =async (data, setModal)=>{
+      let response = await sender("users/register", "POST", {email: data.email, password: data.password, username: data.username})
+      if(response.uid){
+        setResponseStatus(false)
+        setModal("login")
+        return true
+      }
+      else{
+        setResponseStatus(true)
+        return false
+      }
+    }
+
+
     return(
         <>
-        <UserContext.Provider value={{setLoggedIn,loggedIn, email, emailChange, password, passwordChange, usernameChange, username, Logout, token, refreshToken}}>
+        <UserContext.Provider value={{setLoggedIn,loggedIn, loginUser, email, emailChange, password, passwordChange, usernameChange, username, logout, token, refreshToken, responseStatus, registerUser}}>
             {props.children}
         </UserContext.Provider>
         </>
