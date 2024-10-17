@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@mui/material/Button';
-import { borderRadius } from '@mui/system';
+import { LoadingButton } from '@mui/lab';
 import { useContext } from 'react';
 import { ModalContext } from '../context/Modal';
 import { ProfileButton } from './index.styles';
@@ -18,9 +18,9 @@ const HeaderProfileButton = ({dataType}) => {
     <ProfileButton><AccountCircleIcon onClick={(e)=>{setModal(dataType), setModalStatus ? setModalStatus(true): null}} fontSize="large" /> </ProfileButton>
   )
 }
-const FormButton = ({text, type})=>{
+const FormButton = ({text, type, isLoading})=>{
   return(
-    <Button type={type} sx={{borderRadius:"5px"}} color="info"  variant="contained">{text}</Button>
+    <LoadingButton loading={isLoading}  type={type} sx={{borderRadius:"5px"}} color="info"  variant="contained">{text}</LoadingButton>
   )
 }
 

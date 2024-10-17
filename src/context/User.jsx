@@ -1,5 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import useSendData from "../hooks/useSendData";
+import { Alert, AlertTitle, Snackbar } from "@mui/material";
 export const UserContext = createContext();
 
 const User = (props)=>{
@@ -51,11 +52,21 @@ const User = (props)=>{
         window.localStorage.removeItem("token")
         window.localStorage.removeItem("refreshToken")
       }
+
+
+      const [isOpen, setisOpen] = useState(false)
+      const [alertMessage, setAlertMessage] = useState("")
+      const closeSnack = ()=>{
+        setisOpen(false)
+      }
+      const openSnack = ()=>{
+        setisOpen(true)
+      }
       const loginUser = async (data)=>{
         let response = await sender("users/login", "POST", {email: data.email, password: data.password})
         if(!response.token){
           setResponseStatus(true)
-          return false
+          return {status:false, message:response.message}
         }
         else{
           setResponseStatus(false);
@@ -68,19 +79,23 @@ const User = (props)=>{
           localStorage.setItem("username", response.username);
           localStorage.setItem("userStatus", true)
           setLoggedIn(true)
-          return true
+          setAlertMessage("Logged in")
+          openSnack()
+          return {status:true, message:""}
         }
     }
     const registerUser =async (data, setModal)=>{
       let response = await sender("users/register", "POST", {email: data.email, password: data.password, username: data.username})
       if(response.uid){
         setResponseStatus(false)
-        setModal("login")
-        return true
+        await loginUser(data)
+        setAlertMessage("successfully registered, logging in")
+        openSnack()
+        return {status:true, message:""}
       }
       else{
         setResponseStatus(true)
-        return false
+        return {status:false, message:response.message}
       }
     }
 
@@ -89,6 +104,11 @@ const User = (props)=>{
         <>
         <UserContext.Provider value={{setLoggedIn,loggedIn, loginUser, email, emailChange, password, passwordChange, usernameChange, username, logout, token, refreshToken, responseStatus, registerUser}}>
             {props.children}
+            <Snackbar anchorOrigin={{vertical:"bottom",horizontal:"center"}} open={isOpen} autoHideDuration={5000} onClose={closeSnack}>
+              <Alert>
+              {alertMessage}
+              </Alert>
+            </Snackbar>
         </UserContext.Provider>
         </>
     )
