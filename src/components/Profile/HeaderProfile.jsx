@@ -8,9 +8,11 @@ import { ModalContext } from "../../context/Modal";
 const HeaderProfile = ({user}) => {
     const {setModalStatus, setModal} = useContext(ModalContext)
     if(user){
-        return(<>
-              <Link className="headerProfile" to={'/profile/' + user.username}><Typography component="p" variant="body1" margin="0">{user.username}</Typography> <ProfileImage picture={user.profilePicture} size="small"/> </Link>
-              </>
+        return(
+              <Link className="headerProfile" to={"/profile/" + user.username}>
+                <Typography component="p" variant="body1" margin="0">{user.username}</Typography>
+                 <ProfileImage picture={user.profilePicture} size="small"/>
+                 </Link>
         )
     }
   return (
