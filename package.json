@@ -21,6 +21,7 @@
     "@mui/lab": "^6.0.0-beta.12",
     "@mui/material": "^6.1.4",
     "@mui/styled-engine-sc": "^6.1.4",
+    "husky": "^9.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
