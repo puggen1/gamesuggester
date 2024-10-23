@@ -5,17 +5,13 @@ import GameCard from '../Game/GameCard';
 function Frontpage() {
 	const {data, isLoading, isError} = useContext(GameContext);
 	return (
-    <div className="mainContent">
-        <div id="gameCards">
-            {isLoading ? <p>
-                Loading...
-                         </p> : null}
+		<div className="mainContent">
+			<div id="gameCards">
+				{isLoading ? <p>Loading...</p> : null}
 
-            {isError ? <p>
-                Error...
-                       </p> : null}
+				{isError ? <p>Error...</p> : null}
 
-            {!isLoading &&
+				{!isLoading &&
 					!isError &&
 					data.map((game) => {
 						return (<GameCard
@@ -28,8 +24,8 @@ function Frontpage() {
     user={game.addedBy?.username}
 						        />);
 					})}
-        </div>
-    </div>
+			</div>
+		</div>
 	);
 }
 

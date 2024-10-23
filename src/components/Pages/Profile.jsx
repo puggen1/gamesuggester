@@ -17,45 +17,36 @@ function Profile() {
 	const LoggedIn = window.localStorage.getItem('userStatus') === 'true' ? true : false;
 
 	return (
-    <div className="mainContent">
-        {isLoading ? <div>
-            Loading...
-                     </div> : null}
+		<div className="mainContent">
+			{isLoading ? <div>Loading...</div> : null}
 
-        {error ? <div>
-            {error}
-                 </div> : null}
+			{error ? <div>{error}</div> : null}
 
-        {data[0]?.username ? <OuterProfile>
-            <InfoSection>
-                <ProfileInfo username={data[0].username} />
+			{data[0]?.username ? (
+				<OuterProfile>
+					<InfoSection>
+						<ProfileInfo username={data[0].username} />
 
-                {/* here the settings dropdown will be, and stats*/}
-                {LoggedIn && storedUsername === name ? <Dropdown /> : null}
+						{/* here the settings dropdown will be, and stats*/}
+						{LoggedIn && storedUsername === name ? <Dropdown /> : null}
 
-                <ProfileStats
-                    gamesAdded={
+						<ProfileStats
+    gamesAdded={
 								games.filter((game) => {
 									return game.uid === data[0].uid;
 								}).length
 							}
-                />
-            </InfoSection>
-
-            <GamesSection>
-                {gamesLoading ? <div>
-                    Loading...
-                                </div> : null}
-
-                {gamesError ? <div>
-                    {gamesError}
-                              </div> : null}
-
-                {games ? <div
-                    className="games"
-                    id="gameCards"
-                         >
-                    {games.map((game) => {
+						/>
+					</InfoSection>
+					<GamesSection>
+						{gamesLoading ? <div>Loading...</div> : null}
+						{gamesError ? <div>{gamesError}</div> : null}
+						{games ? (
+							<div
+    className="games"
+    id="gameCards"
+							>
+								{games.map((game) => {
 									if (game.uid === data[0].uid) {
 										return (<GameCard
     image={game.image}
@@ -67,14 +58,12 @@ function Profile() {
 									}
 									return null;
 								})}
-                         </div> : null}
-
-                {' '}
-            </GamesSection>
-
-            {' '}
-                             </OuterProfile> : null}
-    </div>
+							</div>
+						) : null}{' '}
+					</GamesSection>{' '}
+				</OuterProfile>
+			) : null}
+		</div>
 	);
 }
 

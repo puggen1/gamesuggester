@@ -9,25 +9,25 @@ import SideNav from '../sideNav';
 function Header({user}) {
 	const [openDrawer, setOpenDrawer] = useState(false);
 	return (
-    <>
-        <SideNav
-            openDrawer={openDrawer}
-            setOpenDrawer={setOpenDrawer}
-        />
+		<>
+			<SideNav
+    openDrawer={openDrawer}
+    setOpenDrawer={setOpenDrawer}
+			/>
 
-        <header>
-            <Navigation setOpenDrawer={setOpenDrawer} />
+			<header>
+				<Navigation setOpenDrawer={setOpenDrawer} />
 
-            <Link
-                className="logo"
-                to="/"
-            >
-                Game Suggester
-            </Link>
+				<Link
+    className="logo"
+    to="/"
+				>
+					Game Suggester
+				</Link>
 
-            <HeaderProfile user={user} />
-        </header>
-    </>
+				<HeaderProfile user={user} />
+			</header>
+		</>
 	);
 }
 

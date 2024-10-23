@@ -103,22 +103,20 @@ function User({children}) {
 			return {status: false, message: response.message};
 		}
 	};
-	const contextItems = useMemo(()=>({setLoggedIn,loggedIn,loginUser,email,emailChange,password,passwordChange,usernameChange,username,logout,token,refreshToken,responseStatus,registerUser}),[setLoggedIn,loggedIn,loginUser,email,emailChange,password,passwordChange,usernameChange,username,logout,token,refreshToken,responseStatus,registerUser])
+	const contextItems = useMemo(() => ({setLoggedIn, loggedIn, loginUser, email, emailChange, password, passwordChange, usernameChange, username, logout, token, refreshToken, responseStatus, registerUser}), [setLoggedIn, loggedIn, loginUser, email, emailChange, password, passwordChange, usernameChange, username, logout, token, refreshToken, responseStatus, registerUser]);
 	return (
-    <UserContext.Provider value={contextItems}>
-        {children}
+		<UserContext.Provider value={contextItems}>
+			{children}
 
-        <Snackbar
-            anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
-            autoHideDuration={5000}
-            onClose={closeSnack}
-            open={isOpen}
-        >
-            <Alert>
-                {alertMessage}
-            </Alert>
-        </Snackbar>
-    </UserContext.Provider>
+			<Snackbar
+    anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+    autoHideDuration={5000}
+    onClose={closeSnack}
+    open={isOpen}
+			>
+				<Alert>{alertMessage}</Alert>
+			</Snackbar>
+		</UserContext.Provider>
 	);
 }
 

@@ -5,68 +5,66 @@ import Stat from '../Stat';
 import CountryFlag from '../../CountryFlag';
 function ProfileStats({gamesAdded, gamesVoted, joined, nationality}) {
 	return (
-    <OuterProfileStats>
-        {typeof gamesAdded === 'number' && (
-        <StatBox>
-            <Typography variant="h6">
-                Games Added
-            </Typography>
+		<OuterProfileStats>
+			{typeof gamesAdded === 'number' && (
+				<StatBox>
+					<Typography variant="h6">Games Added</Typography>
 
-            <Stat
-                stat={
-                    <Typography
-                        fontWeight="300"
-                        variant="h6"
-                    >
-                        {gamesAdded}
-                    </Typography>
+					<Stat
+    stat={
+							<Typography
+    fontWeight="300"
+    variant="h6"
+							>
+								{gamesAdded}
+							</Typography>
 						}
-            />
-        </StatBox>
+					/>
+				</StatBox>
 			)}
 
-        {gamesVoted ? <StatBox>
-            <Typography variant="h6">
-                Games Voted
-            </Typography>
+			{gamesVoted ? (
+				<StatBox>
+					<Typography variant="h6">Games Voted</Typography>
 
-            <Stat
-                stat={
-                    <Typography
-                        fontWeight="300"
-                        variant="h6"
-                    >
-                        {gamesVoted}
-                    </Typography>
+					<Stat
+    stat={
+							<Typography
+    fontWeight="300"
+    variant="h6"
+							>
+								{gamesVoted}
+							</Typography>
 						}
-            />
-                      </StatBox> : null}
+					/>
+				</StatBox>
+			) : null}
 
-        {nationality ? <StatBox>
-            <Typography variant="h6">
-                Nationality
-            </Typography>
+			{nationality ? (
+				<StatBox>
+					<Typography variant="h6">Nationality</Typography>
 
-            <Stat stat={<CountryFlag flag={nationality} />} />
-                       </StatBox> : null}
+					<Stat stat={<CountryFlag flag={nationality} />} />
+				</StatBox>
+			) : null}
 
-        {joined ? <StatBox>
-            <Typography variant="h6">
-                Joined
-            </Typography>
+			{joined ? (
+				<StatBox>
+					<Typography variant="h6">Joined</Typography>
 
-            <Stat
-                stat={
-                    <Typography
-                        fontWeight="300"
-                        variant="h6"
-                    >
-                        {joined}
-                    </Typography>
+					<Stat
+    stat={
+							<Typography
+    fontWeight="300"
+    variant="h6"
+							>
+								{joined}
+							</Typography>
 						}
-            />
-                  </StatBox> : null}
-    </OuterProfileStats>
+					/>
+				</StatBox>
+			) : null}
+		</OuterProfileStats>
 	);
 }
 

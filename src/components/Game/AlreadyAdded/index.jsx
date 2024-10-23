@@ -5,36 +5,30 @@ import {OuterAlreadyAdded} from './index.styles';
 function AlreadyAdded({data}) {
 	const theme = useTheme();
 	return (
-    <OuterAlreadyAdded>
-        <Typography
-            color={theme.palette.warning.main}
-            component="h3"
-            variant="h6"
-        >
-            {data.title}
+		<OuterAlreadyAdded>
+			<Typography
+    color={theme.palette.warning.main}
+    component="h3"
+    variant="h6"
+			>
+				{data.title} have already been added
+			</Typography>
 
-            {' '}
-            have already been added
-        </Typography>
-
-        <Typography
-            color={theme.palette.warning.main}
-            component="p"
-            variant="h6"
-        >
-            {' '}
-
-            View it
-            {' '}
-
-            <Link
-                style={{color: theme.palette.warning.main}}
-                to={'/game/' + data.id}
-            >
-                here
-            </Link>
-        </Typography>
-    </OuterAlreadyAdded>
+			<Typography
+    color={theme.palette.warning.main}
+    component="p"
+    variant="h6"
+			>
+				{' '}
+				View it{' '}
+				<Link
+    style={{color: theme.palette.warning.main}}
+    to={'/game/' + data.id}
+				>
+					here
+				</Link>
+			</Typography>
+		</OuterAlreadyAdded>
 	);
 }
 

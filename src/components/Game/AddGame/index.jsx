@@ -77,123 +77,111 @@ function AddGame({data}) {
 		noDuplicates &&
 		noDuplicates.length > 0 && (
 			<>
-    <Typography
-        color="white"
-        component="h1"
-        textAlign="center"
-        variant="h4"
-    >
-        Add a game
-    </Typography>
+				<Typography
+    color="white"
+    component="h1"
+    textAlign="center"
+    variant="h4"
+				>
+					Add a game
+				</Typography>
 
-    <div className="search">
-        <Typography
-            color="white"
-            component="h2"
-            variant="h5"
-        >
-            1. Search for a game
-        </Typography>
+				<div className="search">
+					<Typography
+    color="white"
+    component="h2"
+    variant="h5"
+					>
+						1. Search for a game
+					</Typography>
 
-        <SteamGameSearch
-            chosenGame={chosenGame}
-            noDuplicates={noDuplicates}
-            setChosenGame={setChosenGame}
-        />
-    </div>
+					<SteamGameSearch
+    chosenGame={chosenGame}
+    noDuplicates={noDuplicates}
+    setChosenGame={setChosenGame}
+					/>
+				</div>
 
-    {chosenGame ? <div className="validate">
-        <Typography
-            color="white"
-            component="h2"
-            variant="h5"
-        >
-            2. Look trough the game
-        </Typography>
+				{chosenGame ? (
+					<div className="validate">
+						<Typography
+    color="white"
+    component="h2"
+    variant="h5"
+						>
+							2. Look trough the game
+						</Typography>
 
-        {chosenGameLoadingData && isDuplicateDataLoading ? <ConfirmGameSkeleton /> : null}
+						{chosenGameLoadingData && isDuplicateDataLoading ? <ConfirmGameSkeleton /> : null}
 
-        {isDuplicateData.found && !isDuplicateDataLoading ? <AlreadyAdded data={isDuplicateData} /> : null}
+						{isDuplicateData.found && !isDuplicateDataLoading ? <AlreadyAdded data={isDuplicateData} /> : null}
 
-        {chosenGameErrorData ? <p>
-            test error
-                               </p> : null}
+						{chosenGameErrorData ? <p>test error</p> : null}
 
-        {!chosenGameLoadingData && !isDuplicateData.found && <AddGameCard gameData={chosenGameData} />}
-                  </div> : null}
+						{!chosenGameLoadingData && !isDuplicateData.found && <AddGameCard gameData={chosenGameData} />}
+					</div>
+				) : null}
 
-    {chosenGame && !chosenGameLoadingData && !isDuplicateData.found && !isDuplicateDataLoading ? <>
-        {' '}
+				{chosenGame && !chosenGameLoadingData && !isDuplicateData.found && !isDuplicateDataLoading ? (
+					<>
+						{' '}
+						<div className="confirm">
+							<Typography
+    color="white"
+    component="h2"
+    variant="h5"
+							>
+								3. Confirm
+							</Typography>
 
-        <div className="confirm">
-            <Typography
-                color="white"
-                component="h2"
-                variant="h5"
-            >
-                3. Confirm
-            </Typography>
-
-            <div className="actionButtons">
-                <Button
-                    color="warning"
-                    onClick={cancel}
-                    startIcon={<Clear color="warning" />}
-                    sx={{
+							<div className="actionButtons">
+								<Button
+    color="warning"
+    onClick={cancel}
+    startIcon={<Clear color="warning" />}
+    sx={{
 										backgroundColor: theme.palette.secondary.main,
 										width: '150px',
 									}}
-                >
-                    Cancel
-                </Button>
+								>
+									Cancel
+								</Button>
 
-                <Button
-                    color="warning"
-                    onClick={confirm}
-                    startIcon={<Check color="warning" />}
-                    sx={{
+								<Button
+    color="warning"
+    onClick={confirm}
+    startIcon={<Check color="warning" />}
+    sx={{
 										backgroundColor: theme.palette.secondary.main,
 										width: '150px',
 									}}
-                >
-                    Add game
-                </Button>
-            </div>
-        </div>
-
-        <Snackbar
-            autoHideDuration={10000}
-            onClose={cancel}
-            open={isOpen}
-        >
-            <Alert severity="success">
-                <AlertTitle>
-                    Game Added!
-                </AlertTitle>
-
-                {chosenGame?.name ? chosenGame.name : ''}
-
-                {' '}
-
-                has been added!
-                {' '}
-
-                <strong>
-                    <Link to={'/game/' + chosenGame.appID}>
-                        view game
-                    </Link>
-                </strong>
-
-                <Button
-                    onClick={() => {
+								>
+									Add game
+								</Button>
+							</div>
+						</div>
+						<Snackbar
+    autoHideDuration={10000}
+    onClose={cancel}
+    open={isOpen}
+						>
+							<Alert severity="success">
+								<AlertTitle>Game Added!</AlertTitle>
+								{chosenGame?.name ? chosenGame.name : ''} has been added!{' '}
+								<strong>
+									<Link to={'/game/' + chosenGame.appID}>view game</Link>
+								</strong>
+								<Button
+    onClick={() => {
 										cancel();
 									}}
-                >
-                    <Close />
-                </Button>
-            </Alert>
-        </Snackbar>
-                                                                                                 </> : null}
+								>
+									<Close />
+								</Button>
+							</Alert>
+						</Snackbar>
+					</>
+				) : null}
 			</>
 		)
 	);

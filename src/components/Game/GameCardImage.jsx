@@ -1,12 +1,11 @@
-
 function GameCardImage({image}) {
 	return (
-    <div className="cardImage">
-        <img
-            alt="game image"
-            src={image}
-        />
-    </div>
+		<div className="cardImage">
+			<img
+    alt="game image"
+    src={image}
+			/>
+		</div>
 	);
 }
 

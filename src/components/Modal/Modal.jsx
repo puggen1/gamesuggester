@@ -8,33 +8,33 @@ function ModalComp() {
 	const {modalStatus, setModalStatus, modal, setModal} = useContext(ModalContext);
 	if (modal === 'login') {
 		return (
-    <Modal
-        onClose={() => {
+			<Modal
+    onClose={() => {
 					setModalStatus(false);
 				}}
-        open={modalStatus}
-    >
-        <Login
-            handleModalFunction={setModal}
-            key="login"
-            setModalStatus={setModalStatus}
-        />
-    </Modal>
+    open={modalStatus}
+			>
+				<Login
+    handleModalFunction={setModal}
+    key="login"
+    setModalStatus={setModalStatus}
+				/>
+			</Modal>
 		);
 	} else if (modal === 'register') {
 		return (
-    <Modal
-        onClose={() => {
+			<Modal
+    onClose={() => {
 					setModalStatus(false);
 				}}
-        open={modalStatus}
-    >
-        <Register
-            handleModalFunction={setModal}
-            key="register"
-            setModalStatus={setModalStatus}
-        />
-    </Modal>
+    open={modalStatus}
+			>
+				<Register
+    handleModalFunction={setModal}
+    key="register"
+    setModalStatus={setModalStatus}
+				/>
+			</Modal>
 		);
 	}
 }

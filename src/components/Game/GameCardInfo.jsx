@@ -1,32 +1,18 @@
-
 import {Link} from 'react-router-dom';
 
 function GameCardInfo({title, username}) {
 	return (
-    <div className="gameCardInfo">
-        <h2 className="name">
-            {title}
-        </h2>
+		<div className="gameCardInfo">
+			<h2 className="name">{title}</h2>
 
-        <p className="userLink">
-            added by 
-            {' '}
+			<p className="userLink">
+				added by <Link to={'profile/' + username}>{username} </Link>
+			</p>
 
-            <Link to={'profile/' + username}>
-                {username}
+			<p className="view">Click to view</p>
 
-                {' '}
-            </Link>
-        </p>
-
-        <p className="view">
-            Click to view
-        </p>
-
-        <p className="cardVote">
-            voting (coming soon)
-        </p>
-    </div>
+			<p className="cardVote">voting (coming soon)</p>
+		</div>
 	);
 }
 

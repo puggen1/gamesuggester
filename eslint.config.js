@@ -23,6 +23,8 @@ export default [
 			'react/forbid-component-props': 'off',
 			'react/jsx-no-literals': 'off',
 			'react/no-multi-comp': 'off',
+			'react/jsx-one-expression-per-line': 'off', //does not need this as i have prettier, will connect later
+			'react/jsx-newline': 'off',
 		},
 	},
 	{languageOptions: {globals: globals.browser}},

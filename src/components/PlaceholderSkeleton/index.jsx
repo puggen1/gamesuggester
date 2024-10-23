@@ -1,12 +1,10 @@
 import {Skeleton} from '@mui/material';
 import AddGamePlaceholder from './AddGamePlaceholder';
-function PlaceholderSkeleton({children,type}) {
+function PlaceholderSkeleton({children, type}) {
 	if (type === 'addGame') {
 		return <AddGamePlaceholder />;
 	} else {
-		return (<Skeleton>
-    {children}
-          </Skeleton>);
+		return <Skeleton>{children}</Skeleton>;
 	}
 }
 

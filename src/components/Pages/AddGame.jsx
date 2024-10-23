@@ -11,15 +11,13 @@ function AddGame() {
 	//gets the whole steam library
 	const {data, isLoading, error} = useApiFetcher('steamgames', token);
 	return (
-    <OuterAddGame>
-        {isLoading ? <PlaceholderSkeleton type="addGame" /> : null}
+		<OuterAddGame>
+			{isLoading ? <PlaceholderSkeleton type="addGame" /> : null}
 
-        {error ? <p>
-            error
-                 </p> : null}
+			{error ? <p>error</p> : null}
 
-        {data.length > 0 && <AddGameContent data={data} />}
-    </OuterAddGame>
+			{data.length > 0 && <AddGameContent data={data} />}
+		</OuterAddGame>
 	);
 }
 

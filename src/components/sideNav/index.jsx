@@ -14,72 +14,74 @@ function SideNav({openDrawer, setOpenDrawer}) {
 	const {loggedIn, setLoggedIn} = useContext(UserContext);
 	const navigate = useNavigate();
 	return (
-    <Drawer
-        anchor="left"
-        className="sideNav"
-        onClose={() => {
+		<Drawer
+    anchor="left"
+    className="sideNav"
+    onClose={() => {
 				setOpenDrawer(false);
 			}}
-        open={openDrawer}
-    >
-        <Nav>
-            <Box sx={{display: 'grid', justifyContent: 'end', padding: '0 1rem'}}>
-                <Button
-                    color="warning"
-                    onClick={() => {
+    open={openDrawer}
+		>
+			<Nav>
+				<Box sx={{display: 'grid', justifyContent: 'end', padding: '0 1rem'}}>
+					<Button
+    color="warning"
+    onClick={() => {
 							setOpenDrawer(false);
 						}}
-                    variant="text"
-                >
-                    <CloseIcon sx={{fontSize: 50}} />
-                </Button>
-            </Box>
+    variant="text"
+					>
+						<CloseIcon sx={{fontSize: 50}} />
+					</Button>
+				</Box>
 
-            <Links>
-                <LinkItem
-                    onClick={() => {
+				<Links>
+					<LinkItem
+    onClick={() => {
 							setOpenDrawer(false);
 						}}
-                >
-                    <Link
-                        style={{textDecoration: 'none'}}
-                        to="/"
-                    >
-                        <HomeIcon
-                            color="warning"
-                            fontSize="large"
-                        />
-                    </Link>
-                </LinkItem>
+					>
+						<Link
+    style={{textDecoration: 'none'}}
+    to="/"
+						>
+							<HomeIcon
+    color="warning"
+    fontSize="large"
+							/>
+						</Link>
+					</LinkItem>
 
-                {loggedIn ? <LinkItem
-                    onClick={() => {
+					{loggedIn ? (
+						<LinkItem
+    onClick={() => {
 								setModalStatus(true);
 								setModal(loggedIn ? navigate('/game/add') : 'login');
 								setOpenDrawer(false);
 							}}
-                            >
-                    <AddIcon
-                        color="warning"
-                        fontSize="large"
-                    />
-                            </LinkItem> : null}
+						>
+							<AddIcon
+    color="warning"
+    fontSize="large"
+							/>
+						</LinkItem>
+					) : null}
 
-                <LinkItem>
-                    <ControllerIcon
-                        color="warning"
-                        fontSize="large"
-                    />
-                </LinkItem>
-            </Links>
+					<LinkItem>
+						<ControllerIcon
+    color="warning"
+    fontSize="large"
+						/>
+					</LinkItem>
+				</Links>
 
-            <NavProfileSection
-                loggedIn={loggedIn}
-                setLoggedIn={setLoggedIn}
-                setOpenDrawer={setOpenDrawer}
-            />
-        </Nav>
-    </Drawer>
+				<NavProfileSection
+    loggedIn={loggedIn}
+    setLoggedIn={setLoggedIn}
+    setOpenDrawer={setOpenDrawer}
+				/>
+			</Nav>
+		</Drawer>
 	);
 }
 

@@ -7,45 +7,43 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 function ActivateModalButton({text, dataType}) {
 	const {setModalStatus, setModal} = useContext(ModalContext);
 	return (
-    <Button
-        color="info"
-        onClick={() => {
+		<Button
+    color="info"
+    onClick={() => {
 				setModal(dataType), setModalStatus ? setModalStatus(true) : null;
 			}}
-        sx={{borderRadius: '5px'}}
-        variant="contained"
-    >
-        {text}
-    </Button>
+    sx={{borderRadius: '5px'}}
+    variant="contained"
+		>
+			{text}
+		</Button>
 	);
 }
 
 function HeaderProfileButton({dataType}) {
 	const {setModalStatus, setModal} = useContext(ModalContext);
 	return (
-    <ProfileButton>
-        <AccountCircleIcon
-            fontSize="large"
-            onClick={() => {
+		<ProfileButton>
+			<AccountCircleIcon
+    fontSize="large"
+    onClick={() => {
 					setModal(dataType), setModalStatus ? setModalStatus(true) : null;
 				}}
-        />
-
-        {' '}
-    </ProfileButton>
+			/>{' '}
+		</ProfileButton>
 	);
 }
 function FormButton({text, type, isLoading}) {
 	return (
-    <LoadingButton
-        color="info"
-        loading={isLoading}
-        sx={{borderRadius: '5px'}}
-        type={type}
-        variant="contained"
-    >
-        {text}
-    </LoadingButton>
+		<LoadingButton
+    color="info"
+    loading={isLoading}
+    sx={{borderRadius: '5px'}}
+    type={type}
+    variant="contained"
+		>
+			{text}
+		</LoadingButton>
 	);
 }
 
