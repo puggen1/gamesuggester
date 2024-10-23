@@ -1,16 +1,42 @@
-import { Typography, Link} from "@mui/material";
-import { OuterAddGameCard } from "./index.styles";
-const AddGameCard = ({gameData}) => {
-    const {name, header_image, short_description, appID} = gameData
-    const steamUrl = "https://store.steampowered.com/app/" + appID;
-  return (
+import {Typography, Link} from '@mui/material';
+import {OuterAddGameCard} from './index.styles';
+function AddGameCard({gameData}) {
+	const {name, header_image, short_description, appID} = gameData;
+	const steamUrl = 'https://store.steampowered.com/app/' + appID;
+	return (
     <OuterAddGameCard>
-        <Typography className="gameTitle" component="h3" variant="body1">{name}</Typography>
-        <Link className="steamLink" variant="body1"  href={steamUrl} target="_blank">Steam Link</Link>
-        <img className="image" src={header_image} alt={name + `'s image`}/>
-        <Typography className="description" variant="body2" component="p">{short_description}</Typography>
-    </OuterAddGameCard>    
-  )
+        <Typography
+            className="gameTitle"
+            component="h3"
+            variant="body1"
+        >
+            {name}
+        </Typography>
+
+        <Link
+            className="steamLink"
+            href={steamUrl}
+            target="_blank"
+            variant="body1"
+        >
+            Steam Link
+        </Link>
+
+        <img
+            alt={name + `'s image`}
+            className="image"
+            src={header_image}
+        />
+
+        <Typography
+            className="description"
+            component="p"
+            variant="body2"
+        >
+            {short_description}
+        </Typography>
+    </OuterAddGameCard>
+	);
 }
 
-export default AddGameCard
+export default AddGameCard;

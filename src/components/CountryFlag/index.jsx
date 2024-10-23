@@ -1,10 +1,13 @@
-import { CountryFlagImage, OuterFlag } from "./index.styles"
-const Countryflag = ({flag}) => {
-  return (
+import {CountryFlagImage, OuterFlag} from './index.styles';
+function Countryflag({flag}) {
+	return (
     <OuterFlag>
-    <CountryFlagImage  src={'https://www.countryflagicons.com/FLAT/48/' + flag + '.png'} alt={flag} />
+        <CountryFlagImage
+            alt={flag}
+            src={'https://www.countryflagicons.com/FLAT/48/' + flag + '.png'}
+        />
     </OuterFlag>
-  )
+	);
 }
 
-export default Countryflag
+export default Countryflag;

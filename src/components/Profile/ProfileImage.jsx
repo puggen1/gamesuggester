@@ -1,10 +1,10 @@
-import React from 'react'
-import "../../assets/style/profileImage.css";
-const ProfileImage = ({picture, size}) => {
-  let classes = `profileImage ${size}`;
-  return (
-    <img src={picture} className={classes}/>
-  )
+import '../../assets/style/profileImage.css';
+function ProfileImage({picture, size}) {
+	let classes = `profileImage ${size}`;
+	return (<img
+    className={classes}
+    src={picture}
+	        />);
 }
 
-export default ProfileImage
+export default ProfileImage;

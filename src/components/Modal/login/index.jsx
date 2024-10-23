@@ -1,55 +1,85 @@
-import Box from "@mui/material/Box"
-import React, { useState } from "react";
-import {style} from "./style"
-import UserAction from "../UserAction";
-import { Alert,AlertTitle, Button, TextField, Typography } from "@mui/material"; 
-import Snackbar from '@mui/material/Snackbar';
-import { InputForm } from "../style";
-import { FormButton } from "../../Button";
-import { UserContext } from "../../../context/User";
-import { useContext } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import loginSchema from "../../../utils/schemas/login";
-import useSendData from "../../../hooks/useSendData";
-import TextInput from "../../UserInput/TextInput";
-import { Close } from "@mui/icons-material";
-const Login =React.forwardRef(({handleModalFunction, setModalStatus}, ref)=>{
-  const {setLoggedIn, token, refreshToken, loginUser, responseStatus} = useContext(UserContext)
-  const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(loginSchema)})
-  const [isLoading, setisLoading] = useState(false)
-  const [error, setError] = useState("")
+import Box from '@mui/material/Box';
+import React, {useState} from 'react';
+import {style} from './style';
+import UserAction from '../UserAction';
+import {Typography} from '@mui/material';
+import {InputForm} from '../style';
+import {FormButton} from '../../Button';
+import {UserContext} from '../../../context/User';
+import {useContext} from 'react';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import loginSchema from '../../../utils/schemas/login';
+import TextInput from '../../UserInput/TextInput';
+// eslint-disable-next-line no-unused-vars
+const Login = React.forwardRef(({handleModalFunction, setModalStatus}, ref) => {
+	const {loginUser, responseStatus} = useContext(UserContext);
+	const {
+		register,
+		handleSubmit,
+		formState: {errors},
+	} = useForm({resolver: yupResolver(loginSchema)});
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState('');
 
+	const loginAction = async (data) => {
+		setIsLoading(true);
+		const response = await loginUser(data);
+		if (response.status) {
+			setIsLoading(false);
+			setModalStatus(false);
+			setError('');
+		} else {
+			setIsLoading(false);
+			setError(response.message);
+		}
+	};
 
-  const loginAction =async (data)=>{
-    setisLoading(true)
-    const response = await loginUser(data)
-    if(response.status){
-      setisLoading(false)
-      setModalStatus(false)
-      setError("")
-    }
-    else{
-      setisLoading(false)
-      setError(response.message)
-    }
-  }
+	return (
+    <Box sx={style}>
+        <UserAction handleModalFunction={handleModalFunction} />
 
-  return (<>
-  <Box sx={style}>
-        <UserAction handleModalFunction={handleModalFunction}/>
         <InputForm onSubmit={handleSubmit(loginAction)}>
-        <TextInput responseStatus={(responseStatus || errors?.email)} error={errors?.email} type="email" name="email" autocomplete="email" label="email" formControll={register("email")} />
-        <TextInput responseStatus={(responseStatus || errors?.password)} error={errors?.password} type="password" name="password" autocomplete="current-password" label="password" formControll={register("password")} />
-        <div>
-          <Typography color="error" variant="p" component={"p"} fontSize={12} padding={"0px 1rem"}>{error ? error : ""}</Typography>
-          </div>
-        <FormButton isLoading={isLoading} type="submit" text="login"/>
-        </InputForm>
-       
-        </Box>
-        </>
-  )
-})
+            <TextInput
+                autocomplete="email"
+                error={errors?.email}
+                formControll={register('email')}
+                label="email"
+                name="email"
+                responseStatus={responseStatus || errors?.email}
+                type="email"
+            />
 
-export default Login
+            <TextInput
+                autocomplete="current-password"
+                error={errors?.password}
+                formControll={register('password')}
+                label="password"
+                name="password"
+                responseStatus={responseStatus || errors?.password}
+                type="password"
+            />
+
+            <div>
+                <Typography
+                    color="error"
+                    component="p"
+                    fontSize={12}
+                    padding="0px 1rem"
+                    variant="p"
+                >
+                    {error ? error : ''}
+                </Typography>
+            </div>
+
+            <FormButton
+                isLoading={isLoading}
+                text="login"
+                type="submit"
+            />
+        </InputForm>
+    </Box>
+	);
+});
+
+export default Login;

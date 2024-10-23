@@ -1,26 +1,29 @@
-import { OuterAddGame } from "../Game/index.styles"
-import useApiFetcher from "../../hooks/useApiFetcher"
-import AddGameContent from "../Game/AddGame"
-import PlaceholderSkeleton from "../PlaceholderSkeleton"
+import {OuterAddGame} from '../Game/index.styles';
+import useApiFetcher from '../../hooks/useApiFetcher';
+import AddGameContent from '../Game/AddGame';
+import PlaceholderSkeleton from '../PlaceholderSkeleton';
 /**
  * @description the add game page, it shows an form for adding games
  */
-const AddGame = () => {
-  //the token is used to validate you are logged in, limits the amount of times we use the external api, reduces cost.
-  const token = localStorage.getItem("token")
-  //gets the whole steam library
-    const {data, isLoading, error} = useApiFetcher("steamgames", token)
-    return (<>
+function AddGame() {
+	//the token is used to validate you are logged in, limits the amount of times we use the external api, reduces cost.
+	const token = localStorage.getItem('token');
+	//gets the whole steam library
+	const {data, isLoading, error} = useApiFetcher('steamgames', token);
+	return (
     <OuterAddGame>
-      {isLoading && <PlaceholderSkeleton type="addGame"></PlaceholderSkeleton>}
-      {error && <p>error</p>}
-      {data.length > 0 &&<AddGameContent data={data}/>}
+        {isLoading ? <PlaceholderSkeleton type="addGame" /> : null}
+
+        {error ? <p>
+            error
+                 </p> : null}
+
+        {data.length > 0 && <AddGameContent data={data} />}
     </OuterAddGame>
-    </>
-  )
+	);
 }
 
-export default AddGame
+export default AddGame;
 /**
  * <Autocomplete options={data}
          disablePortal
@@ -29,5 +32,3 @@ export default AddGame
          renderInput={(params) => <TextField {...params} label="Games" />}
            />
  */
-
-          
