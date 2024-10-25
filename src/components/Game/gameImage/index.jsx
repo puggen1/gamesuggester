@@ -1,9 +1,6 @@
-import React from 'react'
-import { GameImg } from './index.styles'
-const GameImage = ({src, alt}) => {
-  return (
-   <GameImg src={src} alt={alt}/>
-  )
+import {GameImg} from './index.styles';
+function GameImage({src, alt}) {
+	return <GameImg alt={alt} src={src} />;
 }
 
-export default GameImage
+export default GameImage;

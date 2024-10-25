@@ -1,47 +1,62 @@
-import Box from "@mui/material/Box"
-import { TextField } from "@mui/material";
-import React from "react";
-import { style } from "../login/style";
-import UserAction from "../UserAction";
-import { ModalContext } from "../../../context/Modal";
-import { useContext, useState } from "react";
-import { FormButton } from "../../Button";
-import { InputForm } from "../style";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import registerSchema from "../../../utils/schemas/register";
-import useSendData from "../../../hooks/useSendData";
-import TextInput from "../../UserInput/TextInput";
-const Register = React.forwardRef(({handleModalFunction}, ref)=>{
-  const {sender} = useSendData()
-  const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(registerSchema)})
+import Box from '@mui/material/Box';
+import {Typography} from '@mui/material';
+import React from 'react';
+import {style} from '../login/style';
+import UserAction from '../UserAction';
+import {ModalContext} from '../../../context/Modal';
+import {useContext, useState} from 'react';
+import {FormButton} from '../../Button';
+import {InputForm} from '../style';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {useForm} from 'react-hook-form';
+import registerSchema from '../../../utils/schemas/register';
+import TextInput from '../../UserInput/TextInput';
+import {UserContext} from '../../../context/User';
+const Register = React.forwardRef(({handleModalFunction}, ref) => {
+	const {
+		register,
+		handleSubmit,
+		formState: {errors},
+	} = useForm({resolver: yupResolver(registerSchema)});
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState('');
+	const {registerUser, responseStatus} = useContext(UserContext);
+	const {setModalStatus, setModal} = useContext(ModalContext);
 
-  
-  const registerUser =async (data)=>{
-    let response = await sender("users/create", "POST", {email: data.email, password: data.password, username: data.username})
-    if(response.uid){
-      setResponseStatus(false)
-      setModal("login")
-    }
-    else{
-      setResponseStatus(true)
-    }
-  }
+	const registerAction = async (data) => {
+		setIsLoading(true);
+		let response = await registerUser(data, setModal);
+		if (response.status) {
+			setError('');
+			setIsLoading(false);
+			setModalStatus(false);
+		} else {
+			setError(response.message);
+			setIsLoading(false);
+		}
+	};
+	console.log(error);
+	return (
+		<Box ref={ref} sx={style}>
+			<UserAction handleModalFunction={handleModalFunction} />
 
-  const [responseStatus, setResponseStatus] = useState(false)
-  const {setModalStatus, setModal} = useContext(ModalContext)
-    return (
-      <Box  ref={ref} sx={style}>
-         <UserAction handleModalFunction={handleModalFunction}/>
-         <InputForm onSubmit={handleSubmit(registerUser)}>
-          <TextInput responseStatus={(responseStatus || errors?.email)} type="email" name="email" autocomplete="email" label="email" formControll={register("email")} />
-          <TextInput responseStatus={(responseStatus || errors?.username)} type="username" autocomplete="username" name="username" label="username" formControll={register("username")} />
-          <TextInput responseStatus={(responseStatus || errors?.password)} type="password" name="new-password" label="password" formControll={register("password")} />
-         
-        <FormButton type="submit" text="Register"/>
-        </InputForm>
-      </Box>
-    )
-  })
+			<InputForm onSubmit={handleSubmit(registerAction)}>
+				<TextInput autocomplete="email" error={errors?.email} formControll={register('email')} label="email" name="email" responseStatus={responseStatus || errors?.email} type="email" />
 
-export default Register
+				<TextInput autocomplete="username" error={errors?.username} formControll={register('username')} label="username" name="username" responseStatus={responseStatus || errors?.username} type="username" />
+
+				<TextInput error={errors?.password} formControll={register('password')} label="password" name="new-password" responseStatus={responseStatus || errors?.password} type="password" />
+
+				<div>
+					<Typography color="error" component="p" fontSize={12} padding="0px 1rem" variant="p">
+						{error ? error : ''}
+					</Typography>
+				</div>
+
+				<FormButton isLoading={isLoading} text="Register" type="submit" />
+			</InputForm>
+		</Box>
+	);
+});
+
+export default Register;
