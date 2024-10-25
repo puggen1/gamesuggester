@@ -26,10 +26,10 @@ function Game() {
 					<GameInfo description={game.description ? game.description : undefined} steam={game.url} title={game.title} user={game.addedBy?.username} />
 
 					<GameImage
-    alt={`
+						alt={`
       ${game.title}'s image
      `}
-    src={game.image}
+						src={game.image}
 					/>
 				</GamePage>
 			)}

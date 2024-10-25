@@ -20,17 +20,16 @@ function Dropdown() {
 	return (
 		<OuterDropdown>
 			<Button
-    className={isOpen ? 'mainButton open' : 'mainButton'}
-    color="secondary"
-    endIcon={isOpen ? <ArrowDropUp /> : <ArrowDropDown />}
-    onClick={() => {
+				className={isOpen ? 'mainButton open' : 'mainButton'}
+				color="secondary"
+				endIcon={isOpen ? <ArrowDropUp /> : <ArrowDropDown />}
+				onClick={() => {
 					setIsOpen((prev) => {
 						return !prev;
 					});
 				}}
-    startIcon={<Settings className="rotate" />}
-    variant="contained"
-			>
+				startIcon={<Settings className="rotate" />}
+				variant="contained">
 				Settings
 			</Button>
 

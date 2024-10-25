@@ -7,28 +7,28 @@ function SteamGameSearch({noDuplicates, setChosenGame, chosenGame}) {
 	return (
 		<OuterSteamGameSearch>
 			<Autocomplete
-    disablePortal
-    getOptionLabel={(option) => {
+				disablePortal
+				getOptionLabel={(option) => {
 					return option.name;
 				}}
-    inputValue={input}
-    onChange={(event, value) => {
+				inputValue={input}
+				onChange={(event, value) => {
 					setChosenGame(value);
 				}}
-    onInputChange={(event, value) => {
+				onInputChange={(event, value) => {
 					setInput(value);
 				}}
-    options={noDuplicates}
-    renderInput={(params) => <TextField {...params} label="Find game" />}
-    renderOption={(props, option) => {
+				options={noDuplicates}
+				renderInput={(params) => <TextField {...params} label="Find game" />}
+				renderOption={(props, option) => {
 					return (
 						<li {...props} key={option.appID}>
 							{option.name}{' '}
 						</li>
 					);
 				}}
-    sx={{}}
-    value={chosenGame}
+				sx={{}}
+				value={chosenGame}
 			/>
 		</OuterSteamGameSearch>
 	);

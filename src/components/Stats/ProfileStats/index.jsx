@@ -11,7 +11,7 @@ function ProfileStats({gamesAdded, gamesVoted, joined, nationality}) {
 					<Typography variant="h6">Games Added</Typography>
 
 					<Stat
-    stat={
+						stat={
 							<Typography fontWeight="300" variant="h6">
 								{gamesAdded}
 							</Typography>
@@ -25,7 +25,7 @@ function ProfileStats({gamesAdded, gamesVoted, joined, nationality}) {
 					<Typography variant="h6">Games Voted</Typography>
 
 					<Stat
-    stat={
+						stat={
 							<Typography fontWeight="300" variant="h6">
 								{gamesVoted}
 							</Typography>
@@ -47,7 +47,7 @@ function ProfileStats({gamesAdded, gamesVoted, joined, nationality}) {
 					<Typography variant="h6">Joined</Typography>
 
 					<Stat
-    stat={
+						stat={
 							<Typography fontWeight="300" variant="h6">
 								{joined}
 							</Typography>

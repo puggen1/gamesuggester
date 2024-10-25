@@ -115,26 +115,24 @@ function AddGame({data}) {
 
 							<div className="actionButtons">
 								<Button
-    color="warning"
-    onClick={cancel}
-    startIcon={<Clear color="warning" />}
-    sx={{
+									color="warning"
+									onClick={cancel}
+									startIcon={<Clear color="warning" />}
+									sx={{
 										backgroundColor: theme.palette.secondary.main,
 										width: '150px',
-									}}
-								>
+									}}>
 									Cancel
 								</Button>
 
 								<Button
-    color="warning"
-    onClick={confirm}
-    startIcon={<Check color="warning" />}
-    sx={{
+									color="warning"
+									onClick={confirm}
+									startIcon={<Check color="warning" />}
+									sx={{
 										backgroundColor: theme.palette.secondary.main,
 										width: '150px',
-									}}
-								>
+									}}>
 									Add game
 								</Button>
 							</div>
@@ -147,10 +145,9 @@ function AddGame({data}) {
 									<Link to={'/game/' + chosenGame.appID}>view game</Link>
 								</strong>
 								<Button
-    onClick={() => {
+									onClick={() => {
 										cancel();
-									}}
-								>
+									}}>
 									<Close />
 								</Button>
 							</Alert>

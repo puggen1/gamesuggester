@@ -17,25 +17,23 @@ function NavProfileSection({loggedIn, setOpenDrawer}) {
 					<div style={{display: 'flex', justifyContent: 'space-between'}}>
 						<Link to={'/profile/' + localStorage.getItem('username')}>
 							<Button
-    color="info"
-    onClick={() => {
+								color="info"
+								onClick={() => {
 									setOpenDrawer(false);
 								}}
-    sx={{borderRadius: '20px'}}
-    variant="contained"
-							>
+								sx={{borderRadius: '20px'}}
+								variant="contained">
 								<Typography fontWeight="500">view profile</Typography>
 							</Button>
 						</Link>
 
 						<Button
-    color="info"
-    onClick={() => {
+							color="info"
+							onClick={() => {
 								logout();
 							}}
-    sx={{borderRadius: '20px'}}
-    variant="contained"
-						>
+							sx={{borderRadius: '20px'}}
+							variant="contained">
 							<Typography fontWeight="500">Logout</Typography>
 						</Button>
 					</div>
@@ -43,24 +41,22 @@ function NavProfileSection({loggedIn, setOpenDrawer}) {
 			) : (
 				<LoggedOutSection>
 					<Button
-    color="secondary"
-    onClick={() => {
+						color="secondary"
+						onClick={() => {
 							setModalStatus(true);
 							setModal('login');
 						}}
-    variant="contained"
-					>
+						variant="contained">
 						<Typography fontWeight="500">Login</Typography>
 					</Button>
 
 					<Button
-    color="secondary"
-    onClick={() => {
+						color="secondary"
+						onClick={() => {
 							setModalStatus(true);
 							setModal('register');
 						}}
-    variant="contained"
-					>
+						variant="contained">
 						<Typography fontWeight="500">Register</Typography>
 					</Button>
 				</LoggedOutSection>

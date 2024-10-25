@@ -8,13 +8,12 @@ function ActivateModalButton({text, dataType}) {
 	const {setModalStatus, setModal} = useContext(ModalContext);
 	return (
 		<Button
-    color="info"
-    onClick={() => {
+			color="info"
+			onClick={() => {
 				setModal(dataType), setModalStatus ? setModalStatus(true) : null;
 			}}
-    sx={{borderRadius: '5px'}}
-    variant="contained"
-		>
+			sx={{borderRadius: '5px'}}
+			variant="contained">
 			{text}
 		</Button>
 	);
@@ -25,8 +24,8 @@ function HeaderProfileButton({dataType}) {
 	return (
 		<ProfileButton>
 			<AccountCircleIcon
-    fontSize="large"
-    onClick={() => {
+				fontSize="large"
+				onClick={() => {
 					setModal(dataType), setModalStatus ? setModalStatus(true) : null;
 				}}
 			/>{' '}

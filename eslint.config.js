@@ -29,6 +29,8 @@ export default [
 			'react/jsx-one-expression-per-line': 'off', //does not need this as i have prettier, will connect later
 			'react/jsx-newline': 'off',
 			'react/jsx-max-props-per-line': 'off',
+			'react/jsx-indent-props': 'off',
+			'react/jsx-closing-bracket-location': 'off',
 			'prettier/prettier': 'error',
 		},
 	},

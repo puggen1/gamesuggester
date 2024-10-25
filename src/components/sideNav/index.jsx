@@ -15,32 +15,29 @@ function SideNav({openDrawer, setOpenDrawer}) {
 	const navigate = useNavigate();
 	return (
 		<Drawer
-    anchor="left"
-    className="sideNav"
-    onClose={() => {
+			anchor="left"
+			className="sideNav"
+			onClose={() => {
 				setOpenDrawer(false);
 			}}
-    open={openDrawer}
-		>
+			open={openDrawer}>
 			<Nav>
 				<Box sx={{display: 'grid', justifyContent: 'end', padding: '0 1rem'}}>
 					<Button
-    color="warning"
-    onClick={() => {
+						color="warning"
+						onClick={() => {
 							setOpenDrawer(false);
 						}}
-    variant="text"
-					>
+						variant="text">
 						<CloseIcon sx={{fontSize: 50}} />
 					</Button>
 				</Box>
 
 				<Links>
 					<LinkItem
-    onClick={() => {
+						onClick={() => {
 							setOpenDrawer(false);
-						}}
-					>
+						}}>
 						<Link style={{textDecoration: 'none'}} to="/">
 							<HomeIcon color="warning" fontSize="large" />
 						</Link>
@@ -48,12 +45,11 @@ function SideNav({openDrawer, setOpenDrawer}) {
 
 					{loggedIn ? (
 						<LinkItem
-    onClick={() => {
+							onClick={() => {
 								setModalStatus(true);
 								setModal(loggedIn ? navigate('/game/add') : 'login');
 								setOpenDrawer(false);
-							}}
-						>
+							}}>
 							<AddIcon color="warning" fontSize="large" />
 						</LinkItem>
 					) : null}

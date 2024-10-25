@@ -5,11 +5,10 @@ function Navigation({setOpenDrawer}) {
 	return (
 		<nav>
 			<label
-    className="navButton"
-    onClick={() => {
+				className="navButton"
+				onClick={() => {
 					setOpenDrawer(true);
-				}}
-			>
+				}}>
 				{' '}
 				<FontAwesomeIcon icon={faBars} />{' '}
 			</label>

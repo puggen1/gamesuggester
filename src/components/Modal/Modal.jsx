@@ -9,22 +9,20 @@ function ModalComp() {
 	if (modal === 'login') {
 		return (
 			<Modal
-    onClose={() => {
+				onClose={() => {
 					setModalStatus(false);
 				}}
-    open={modalStatus}
-			>
+				open={modalStatus}>
 				<Login handleModalFunction={setModal} key="login" setModalStatus={setModalStatus} />
 			</Modal>
 		);
 	} else if (modal === 'register') {
 		return (
 			<Modal
-    onClose={() => {
+				onClose={() => {
 					setModalStatus(false);
 				}}
-    open={modalStatus}
-			>
+				open={modalStatus}>
 				<Register handleModalFunction={setModal} key="register" setModalStatus={setModalStatus} />
 			</Modal>
 		);

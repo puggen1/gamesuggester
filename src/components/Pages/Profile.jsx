@@ -31,7 +31,7 @@ function Profile() {
 						{LoggedIn && storedUsername === name ? <Dropdown /> : null}
 
 						<ProfileStats
-    gamesAdded={
+							gamesAdded={
 								games.filter((game) => {
 									return game.uid === data[0].uid;
 								}).length
