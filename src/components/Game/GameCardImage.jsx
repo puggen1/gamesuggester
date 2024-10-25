@@ -1,10 +1,7 @@
 function GameCardImage({image}) {
 	return (
 		<div className="cardImage">
-			<img
-    alt="game image"
-    src={image}
-			/>
+			<img alt="game image" src={image} />
 		</div>
 	);
 }

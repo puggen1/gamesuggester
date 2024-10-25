@@ -37,59 +37,23 @@ const Register = React.forwardRef(({handleModalFunction}, ref) => {
 	};
 	console.log(error);
 	return (
-		<Box
-    ref={ref}
-    sx={style}
-		>
+		<Box ref={ref} sx={style}>
 			<UserAction handleModalFunction={handleModalFunction} />
 
 			<InputForm onSubmit={handleSubmit(registerAction)}>
-				<TextInput
-    autocomplete="email"
-    error={errors?.email}
-    formControll={register('email')}
-    label="email"
-    name="email"
-    responseStatus={responseStatus || errors?.email}
-    type="email"
-				/>
+				<TextInput autocomplete="email" error={errors?.email} formControll={register('email')} label="email" name="email" responseStatus={responseStatus || errors?.email} type="email" />
 
-				<TextInput
-    autocomplete="username"
-    error={errors?.username}
-    formControll={register('username')}
-    label="username"
-    name="username"
-    responseStatus={responseStatus || errors?.username}
-    type="username"
-				/>
+				<TextInput autocomplete="username" error={errors?.username} formControll={register('username')} label="username" name="username" responseStatus={responseStatus || errors?.username} type="username" />
 
-				<TextInput
-    error={errors?.password}
-    formControll={register('password')}
-    label="password"
-    name="new-password"
-    responseStatus={responseStatus || errors?.password}
-    type="password"
-				/>
+				<TextInput error={errors?.password} formControll={register('password')} label="password" name="new-password" responseStatus={responseStatus || errors?.password} type="password" />
 
 				<div>
-					<Typography
-    color="error"
-    component="p"
-    fontSize={12}
-    padding="0px 1rem"
-    variant="p"
-					>
+					<Typography color="error" component="p" fontSize={12} padding="0px 1rem" variant="p">
 						{error ? error : ''}
 					</Typography>
 				</div>
 
-				<FormButton
-    isLoading={isLoading}
-    text="Register"
-    type="submit"
-				/>
+				<FormButton isLoading={isLoading} text="Register" type="submit" />
 			</InputForm>
 		</Box>
 	);

@@ -77,38 +77,21 @@ function AddGame({data}) {
 		noDuplicates &&
 		noDuplicates.length > 0 && (
 			<>
-				<Typography
-    color="white"
-    component="h1"
-    textAlign="center"
-    variant="h4"
-				>
+				<Typography color="white" component="h1" textAlign="center" variant="h4">
 					Add a game
 				</Typography>
 
 				<div className="search">
-					<Typography
-    color="white"
-    component="h2"
-    variant="h5"
-					>
+					<Typography color="white" component="h2" variant="h5">
 						1. Search for a game
 					</Typography>
 
-					<SteamGameSearch
-    chosenGame={chosenGame}
-    noDuplicates={noDuplicates}
-    setChosenGame={setChosenGame}
-					/>
+					<SteamGameSearch chosenGame={chosenGame} noDuplicates={noDuplicates} setChosenGame={setChosenGame} />
 				</div>
 
 				{chosenGame ? (
 					<div className="validate">
-						<Typography
-    color="white"
-    component="h2"
-    variant="h5"
-						>
+						<Typography color="white" component="h2" variant="h5">
 							2. Look trough the game
 						</Typography>
 
@@ -126,11 +109,7 @@ function AddGame({data}) {
 					<>
 						{' '}
 						<div className="confirm">
-							<Typography
-    color="white"
-    component="h2"
-    variant="h5"
-							>
+							<Typography color="white" component="h2" variant="h5">
 								3. Confirm
 							</Typography>
 
@@ -160,11 +139,7 @@ function AddGame({data}) {
 								</Button>
 							</div>
 						</div>
-						<Snackbar
-    autoHideDuration={10000}
-    onClose={cancel}
-    open={isOpen}
-						>
+						<Snackbar autoHideDuration={10000} onClose={cancel} open={isOpen}>
 							<Alert severity="success">
 								<AlertTitle>Game Added!</AlertTitle>
 								{chosenGame?.name ? chosenGame.name : ''} has been added!{' '}

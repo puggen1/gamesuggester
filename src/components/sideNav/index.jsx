@@ -41,14 +41,8 @@ function SideNav({openDrawer, setOpenDrawer}) {
 							setOpenDrawer(false);
 						}}
 					>
-						<Link
-    style={{textDecoration: 'none'}}
-    to="/"
-						>
-							<HomeIcon
-    color="warning"
-    fontSize="large"
-							/>
+						<Link style={{textDecoration: 'none'}} to="/">
+							<HomeIcon color="warning" fontSize="large" />
 						</Link>
 					</LinkItem>
 
@@ -60,26 +54,16 @@ function SideNav({openDrawer, setOpenDrawer}) {
 								setOpenDrawer(false);
 							}}
 						>
-							<AddIcon
-    color="warning"
-    fontSize="large"
-							/>
+							<AddIcon color="warning" fontSize="large" />
 						</LinkItem>
 					) : null}
 
 					<LinkItem>
-						<ControllerIcon
-    color="warning"
-    fontSize="large"
-						/>
+						<ControllerIcon color="warning" fontSize="large" />
 					</LinkItem>
 				</Links>
 
-				<NavProfileSection
-    loggedIn={loggedIn}
-    setLoggedIn={setLoggedIn}
-    setOpenDrawer={setOpenDrawer}
-				/>
+				<NavProfileSection loggedIn={loggedIn} setLoggedIn={setLoggedIn} setOpenDrawer={setOpenDrawer} />
 			</Nav>
 		</Drawer>
 	);

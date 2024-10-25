@@ -42,19 +42,10 @@ function Profile() {
 						{gamesLoading ? <div>Loading...</div> : null}
 						{gamesError ? <div>{gamesError}</div> : null}
 						{games ? (
-							<div
-    className="games"
-    id="gameCards"
-							>
+							<div className="games" id="gameCards">
 								{games.map((game) => {
 									if (game.uid === data[0].uid) {
-										return (<GameCard
-    image={game.image}
-    key={game.id}
-    profile="true"
-    title={game.title}
-    url={game.url}
-										        />);
+										return <GameCard image={game.image} key={game.id} profile="true" title={game.title} url={game.url} />;
 									}
 									return null;
 								})}

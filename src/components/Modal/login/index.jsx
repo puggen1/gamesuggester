@@ -40,43 +40,17 @@ const Login = React.forwardRef(({handleModalFunction, setModalStatus}, ref) => {
 			<UserAction handleModalFunction={handleModalFunction} />
 
 			<InputForm onSubmit={handleSubmit(loginAction)}>
-				<TextInput
-    autocomplete="email"
-    error={errors?.email}
-    formControll={register('email')}
-    label="email"
-    name="email"
-    responseStatus={responseStatus || errors?.email}
-    type="email"
-				/>
+				<TextInput autocomplete="email" error={errors?.email} formControll={register('email')} label="email" name="email" responseStatus={responseStatus || errors?.email} type="email" />
 
-				<TextInput
-    autocomplete="current-password"
-    error={errors?.password}
-    formControll={register('password')}
-    label="password"
-    name="password"
-    responseStatus={responseStatus || errors?.password}
-    type="password"
-				/>
+				<TextInput autocomplete="current-password" error={errors?.password} formControll={register('password')} label="password" name="password" responseStatus={responseStatus || errors?.password} type="password" />
 
 				<div>
-					<Typography
-    color="error"
-    component="p"
-    fontSize={12}
-    padding="0px 1rem"
-    variant="p"
-					>
+					<Typography color="error" component="p" fontSize={12} padding="0px 1rem" variant="p">
 						{error ? error : ''}
 					</Typography>
 				</div>
 
-				<FormButton
-    isLoading={isLoading}
-    text="login"
-    type="submit"
-				/>
+				<FormButton isLoading={isLoading} text="login" type="submit" />
 			</InputForm>
 		</Box>
 	);

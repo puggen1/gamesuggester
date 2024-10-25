@@ -14,11 +14,7 @@ function ModalComp() {
 				}}
     open={modalStatus}
 			>
-				<Login
-    handleModalFunction={setModal}
-    key="login"
-    setModalStatus={setModalStatus}
-				/>
+				<Login handleModalFunction={setModal} key="login" setModalStatus={setModalStatus} />
 			</Modal>
 		);
 	} else if (modal === 'register') {
@@ -29,11 +25,7 @@ function ModalComp() {
 				}}
     open={modalStatus}
 			>
-				<Register
-    handleModalFunction={setModal}
-    key="register"
-    setModalStatus={setModalStatus}
-				/>
+				<Register handleModalFunction={setModal} key="register" setModalStatus={setModalStatus} />
 			</Modal>
 		);
 	}

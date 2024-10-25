@@ -19,16 +19,10 @@ function SteamGameSearch({noDuplicates, setChosenGame, chosenGame}) {
 					setInput(value);
 				}}
     options={noDuplicates}
-    renderInput={(params) => (<TextField
-        {...params}
-        label="Find game"
-                              />)}
+    renderInput={(params) => <TextField {...params} label="Find game" />}
     renderOption={(props, option) => {
 					return (
-						<li
-    {...props}
-    key={option.appID}
-						>
+						<li {...props} key={option.appID}>
 							{option.name}{' '}
 						</li>
 					);

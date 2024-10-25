@@ -108,12 +108,7 @@ function User({children}) {
 		<UserContext.Provider value={contextItems}>
 			{children}
 
-			<Snackbar
-    anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
-    autoHideDuration={5000}
-    onClose={closeSnack}
-    open={isOpen}
-			>
+			<Snackbar anchorOrigin={{vertical: 'bottom', horizontal: 'center'}} autoHideDuration={5000} onClose={closeSnack} open={isOpen}>
 				<Alert>{alertMessage}</Alert>
 			</Snackbar>
 		</UserContext.Provider>

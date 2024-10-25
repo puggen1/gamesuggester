@@ -10,18 +10,12 @@ function Header({user}) {
 	const [openDrawer, setOpenDrawer] = useState(false);
 	return (
 		<>
-			<SideNav
-    openDrawer={openDrawer}
-    setOpenDrawer={setOpenDrawer}
-			/>
+			<SideNav openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
 
 			<header>
 				<Navigation setOpenDrawer={setOpenDrawer} />
 
-				<Link
-    className="logo"
-    to="/"
-				>
+				<Link className="logo" to="/">
 					Game Suggester
 				</Link>
 

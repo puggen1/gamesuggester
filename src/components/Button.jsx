@@ -35,13 +35,7 @@ function HeaderProfileButton({dataType}) {
 }
 function FormButton({text, type, isLoading}) {
 	return (
-		<LoadingButton
-    color="info"
-    loading={isLoading}
-    sx={{borderRadius: '5px'}}
-    type={type}
-    variant="contained"
-		>
+		<LoadingButton color="info" loading={isLoading} sx={{borderRadius: '5px'}} type={type} variant="contained">
 			{text}
 		</LoadingButton>
 	);

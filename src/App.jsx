@@ -53,30 +53,15 @@ function App() {
 				<ModalComp />
 
 				<Routes>
-					<Route
-    element={<Frontpage />}
-    index
-					/>
+					<Route element={<Frontpage />} index />
 
-					<Route
-    element={<Profile user={user} />}
-    path="profile/:name"
-					/>
+					<Route element={<Profile user={user} />} path="profile/:name" />
 
-					<Route
-    element={<Game />}
-    path="game/:id"
-					/>
+					<Route element={<Game />} path="game/:id" />
 
-					<Route
-    element={<AddGame />}
-    path="game/add"
-					/>
+					<Route element={<AddGame />} path="game/add" />
 
-					<Route
-    element={<h1>404 not found</h1>}
-    path="*"
-					/>
+					<Route element={<h1>404 not found</h1>} path="*" />
 				</Routes>
 
 				<Footer />

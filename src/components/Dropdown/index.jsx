@@ -36,45 +36,25 @@ function Dropdown() {
 
 			<div className={isOpen ? 'dropdownContent showContent' : 'dropdownContent'}>
 				<div className="dropdownItem">
-					<Button
-    color="secondary"
-    endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
-    startIcon={<OpenInNewIcon />}
-    variant="contained"
-					>
+					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<OpenInNewIcon />} variant="contained">
 						Open Settings
 					</Button>
 				</div>
 
 				<div className="dropdownItem">
-					<Button
-    color="secondary"
-    endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
-    startIcon={<EditIcon />}
-    variant="contained"
-					>
+					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<EditIcon />} variant="contained">
 						Change Avatar
 					</Button>
 				</div>
 
 				<div className="dropdownItem">
-					<Button
-    color="secondary"
-    endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
-    startIcon={<PasswordIcon />}
-    variant="contained"
-					>
+					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<PasswordIcon />} variant="contained">
 						Change Password
 					</Button>
 				</div>
 
 				<div className="dropdownItem">
-					<Button
-    color="secondary"
-    endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
-    startIcon={<EmailIcon />}
-    variant="contained"
-					>
+					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<EmailIcon />} variant="contained">
 						Change Email
 					</Button>
 				</div>

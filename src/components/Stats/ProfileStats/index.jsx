@@ -12,10 +12,7 @@ function ProfileStats({gamesAdded, gamesVoted, joined, nationality}) {
 
 					<Stat
     stat={
-							<Typography
-    fontWeight="300"
-    variant="h6"
-							>
+							<Typography fontWeight="300" variant="h6">
 								{gamesAdded}
 							</Typography>
 						}
@@ -29,10 +26,7 @@ function ProfileStats({gamesAdded, gamesVoted, joined, nationality}) {
 
 					<Stat
     stat={
-							<Typography
-    fontWeight="300"
-    variant="h6"
-							>
+							<Typography fontWeight="300" variant="h6">
 								{gamesVoted}
 							</Typography>
 						}
@@ -54,10 +48,7 @@ function ProfileStats({gamesAdded, gamesVoted, joined, nationality}) {
 
 					<Stat
     stat={
-							<Typography
-    fontWeight="300"
-    variant="h6"
-							>
+							<Typography fontWeight="300" variant="h6">
 								{joined}
 							</Typography>
 						}

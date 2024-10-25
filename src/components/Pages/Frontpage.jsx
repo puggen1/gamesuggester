@@ -14,15 +14,7 @@ function Frontpage() {
 				{!isLoading &&
 					!isError &&
 					data.map((game) => {
-						return (<GameCard
-    added={game.createdAt}
-    id={game.id}
-    image={game.image}
-    key={game.id}
-    title={game.title}
-    url={game.url}
-    user={game.addedBy?.username}
-						        />);
+						return <GameCard added={game.createdAt} id={game.id} image={game.image} key={game.id} title={game.title} url={game.url} user={game.addedBy?.username} />;
 					})}
 			</div>
 		</div>

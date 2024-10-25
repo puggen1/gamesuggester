@@ -1,12 +1,15 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import pluginReact from 'eslint-plugin-react';
+import prettier from 'eslint-plugin-prettier';
 export default [
 	pluginJs.configs.recommended,
 	pluginReact.configs.flat.all,
 	{
 		files: ['**/*.{js,mjs,cjs,jsx}'],
-		plugins: {},
+		plugins: {
+			prettier: prettier,
+		},
 		rules: {
 			// Disabling unused variables warning
 			// Disabling React-specific warnings/errors
@@ -25,6 +28,8 @@ export default [
 			'react/no-multi-comp': 'off',
 			'react/jsx-one-expression-per-line': 'off', //does not need this as i have prettier, will connect later
 			'react/jsx-newline': 'off',
+			'react/jsx-max-props-per-line': 'off',
+			'prettier/prettier': 'error',
 		},
 	},
 	{languageOptions: {globals: globals.browser}},
