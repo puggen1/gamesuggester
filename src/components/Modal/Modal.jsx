@@ -3,6 +3,7 @@ import Login from './login';
 import Register from './register';
 import {useContext} from 'react';
 import {ModalContext} from '../../context/Modal';
+import Settings from './settings';
 //changing from css toggle to return toggle to prop toggle
 function ModalComp() {
 	const {modalStatus, setModalStatus, modal, setModal} = useContext(ModalContext);
@@ -24,6 +25,16 @@ function ModalComp() {
 				}}
 				open={modalStatus}>
 				<Register handleModalFunction={setModal} key="register" setModalStatus={setModalStatus} />
+			</Modal>
+		);
+	} else if (modal === 'settings') {
+		return (
+			<Modal
+				onClose={() => {
+					setModalStatus(false);
+				}}
+				open={modalStatus}>
+				<Settings handleModalFunction={setModal} key="settings" setModalStatus={setModalStatus} />
 			</Modal>
 		);
 	}

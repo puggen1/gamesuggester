@@ -4,7 +4,7 @@ import pluginReact from 'eslint-plugin-react';
 import prettier from 'eslint-plugin-prettier';
 export default [
 	pluginJs.configs.recommended,
-	pluginReact.configs.flat.all,
+	pluginReact.configs.flat.recommended,
 	{
 		files: ['**/*.{js,mjs,cjs,jsx}'],
 		plugins: {
@@ -31,7 +31,13 @@ export default [
 			'react/jsx-max-props-per-line': 'off',
 			'react/jsx-indent-props': 'off',
 			'react/jsx-closing-bracket-location': 'off',
-			'prettier/prettier': 'error',
+			'react/jsx-sort-props': 'off',
+			'prettier/prettier': [
+				'error',
+				{
+					endOfLine: 'auto',
+				},
+			],
 		},
 	},
 	{languageOptions: {globals: globals.browser}},
