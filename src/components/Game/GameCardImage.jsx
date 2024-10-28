@@ -1,11 +1,9 @@
-import React from 'react'
-
-const GameCardImage = ({image}) => {
-  return (
-    <div className='cardImage'>
-        <img src={image} alt="game image"/>
-    </div>
-  )
+function GameCardImage({image}) {
+	return (
+		<div className="cardImage">
+			<img alt="game image" src={image} />
+		</div>
+	);
 }
 
-export default GameCardImage
+export default GameCardImage;
