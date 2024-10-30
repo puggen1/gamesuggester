@@ -17,7 +17,7 @@ function Dropdown() {
     state for toggling the dropdown
 
      */
-	const {setModal, setModalStatus} = useContext(ModalContext);
+	const {setModal, setModalStatus, setTab} = useContext(ModalContext);
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<OuterDropdown>
@@ -41,7 +41,9 @@ function Dropdown() {
 						color="secondary"
 						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
 						onClick={() => {
-							setModal('settings', setModalStatus(true));
+							setModal('settings');
+							setModalStatus(true);
+							setTab('0');
 						}}
 						startIcon={<OpenInNewIcon />}
 						variant="contained">
@@ -50,19 +52,46 @@ function Dropdown() {
 				</div>
 
 				<div className="dropdownItem">
-					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<EditIcon />} variant="contained">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('0');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<EditIcon />}
+						variant="contained">
 						Change Avatar
 					</Button>
 				</div>
 
 				<div className="dropdownItem">
-					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<PasswordIcon />} variant="contained">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('1');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<PasswordIcon />}
+						variant="contained">
 						Change Password
 					</Button>
 				</div>
 
 				<div className="dropdownItem">
-					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<EmailIcon />} variant="contained">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('1');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<EmailIcon />}
+						variant="contained">
 						Change Email
 					</Button>
 				</div>

@@ -6,7 +6,7 @@ import {ModalContext} from '../../context/Modal';
 import Settings from './settings';
 //changing from css toggle to return toggle to prop toggle
 function ModalComp() {
-	const {modalStatus, setModalStatus, modal, setModal} = useContext(ModalContext);
+	const {modalStatus, setModalStatus, modal, setModal, setTab, tab} = useContext(ModalContext);
 	if (modal === 'login') {
 		return (
 			<Modal
@@ -34,7 +34,7 @@ function ModalComp() {
 					setModalStatus(false);
 				}}
 				open={modalStatus}>
-				<Settings handleModalFunction={setModal} key="settings" setModalStatus={setModalStatus} />
+				<Settings value={tab} setValue={setTab} handleModalFunction={setModal} key="settings" setModalStatus={setModalStatus} />
 			</Modal>
 		);
 	}

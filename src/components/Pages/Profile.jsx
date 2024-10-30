@@ -15,6 +15,7 @@ function Profile() {
 	const {data: games, isLoading: gamesLoading, error: gamesError} = useContext(GameContext);
 	const storedUsername = window.localStorage.getItem('username');
 	const LoggedIn = window.localStorage.getItem('userStatus') === 'true' ? true : false;
+
 	return (
 		<div className="mainContent">
 			{isLoading ? <div>Loading...</div> : null}
