@@ -30,6 +30,7 @@ function ModalComp() {
 	} else if (modal === 'settings') {
 		return (
 			<Modal
+				sx={{overflow: 'auto'}}
 				onClose={() => {
 					setModalStatus(false);
 				}}
