@@ -15,7 +15,7 @@ function Profile() {
 	const {data: games, isLoading: gamesLoading, error: gamesError} = useContext(GameContext);
 	const storedUsername = window.localStorage.getItem('username');
 	const LoggedIn = window.localStorage.getItem('userStatus') === 'true' ? true : false;
-
+	console.log(data);
 	return (
 		<div className="mainContent">
 			{isLoading ? <div>Loading...</div> : null}
@@ -23,7 +23,7 @@ function Profile() {
 			{data[0]?.username ? (
 				<OuterProfile>
 					<InfoSection>
-						<ProfileInfo username={data[0].username} />
+						<ProfileInfo username={data[0]?.username} url={data[0]?.photoURL} />
 						{/* here the settings dropdown will be, and stats*/}
 						{LoggedIn && storedUsername === name ? <Dropdown /> : null}
 						<ProfileStats
