@@ -6,7 +6,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import PasswordIcon from '@mui/icons-material/Password';
 import EmailIcon from '@mui/icons-material/Email';
 import {Button} from '@mui/material';
-
+import {useContext} from 'react';
+import {ModalContext} from '../../context/Modal.jsx';
 import {useState} from 'react';
 import {OuterDropdown} from './index.styles.js';
 function Dropdown() {
@@ -16,6 +17,7 @@ function Dropdown() {
     state for toggling the dropdown
 
      */
+	const {setModal, setModalStatus, setTab} = useContext(ModalContext);
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<OuterDropdown>
@@ -35,25 +37,61 @@ function Dropdown() {
 
 			<div className={isOpen ? 'dropdownContent showContent' : 'dropdownContent'}>
 				<div className="dropdownItem">
-					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<OpenInNewIcon />} variant="contained">
+					<Button
+						color="secondary"
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('0');
+						}}
+						startIcon={<OpenInNewIcon />}
+						variant="contained">
 						Open Settings
 					</Button>
 				</div>
 
 				<div className="dropdownItem">
-					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<EditIcon />} variant="contained">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('0');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<EditIcon />}
+						variant="contained">
 						Change Avatar
 					</Button>
 				</div>
 
 				<div className="dropdownItem">
-					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<PasswordIcon />} variant="contained">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('1');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<PasswordIcon />}
+						variant="contained">
 						Change Password
 					</Button>
 				</div>
 
 				<div className="dropdownItem">
-					<Button color="secondary" endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />} startIcon={<EmailIcon />} variant="contained">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('1');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<EmailIcon />}
+						variant="contained">
 						Change Email
 					</Button>
 				</div>

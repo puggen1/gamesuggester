@@ -19,21 +19,17 @@ function Profile() {
 	return (
 		<div className="mainContent">
 			{isLoading ? <div>Loading...</div> : null}
-
 			{error ? <div>{error}</div> : null}
-
 			{data[0]?.username ? (
 				<OuterProfile>
 					<InfoSection>
 						<ProfileInfo username={data[0].username} />
-
 						{/* here the settings dropdown will be, and stats*/}
 						{LoggedIn && storedUsername === name ? <Dropdown /> : null}
-
 						<ProfileStats
 							gamesAdded={
 								games.filter((game) => {
-									return game.uid === data[0].uid;
+									return game.addedBy.uid === data[0].uid;
 								}).length
 							}
 						/>
@@ -44,8 +40,8 @@ function Profile() {
 						{games ? (
 							<div className="games" id="gameCards">
 								{games.map((game) => {
-									if (game.uid === data[0].uid) {
-										return <GameCard image={game.image} key={game.id} profile="true" title={game.title} url={game.url} />;
+									if (game.addedBy?.uid === data[0].uid) {
+										return <GameCard id={game.id} image={game.image} key={game.id} profile="true" title={game.title} url={game.url} user={game.addedBy?.username} />;
 									}
 									return null;
 								})}
@@ -57,5 +53,4 @@ function Profile() {
 		</div>
 	);
 }
-
 export default Profile;
