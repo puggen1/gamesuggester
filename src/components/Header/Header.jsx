@@ -16,7 +16,7 @@ function Header({user}) {
 				<Navigation setOpenDrawer={setOpenDrawer} />
 
 				<Link className="logo" to="/">
-					Game Suggester
+					Game Recommender
 				</Link>
 
 				<HeaderProfile user={user} />
