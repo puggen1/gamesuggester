@@ -5,29 +5,99 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import EditIcon from '@mui/icons-material/Edit';
 import PasswordIcon from '@mui/icons-material/Password';
 import EmailIcon from '@mui/icons-material/Email';
-import { Button } from "@mui/material";
-
-import { useState } from "react"
-import { OuterDropdown } from "./index.styles.js"
-const Dropdown = () => {
-    /*
+import {Button} from '@mui/material';
+import {useContext} from 'react';
+import {ModalContext} from '../../context/Modal.jsx';
+import {useState} from 'react';
+import {OuterDropdown} from './index.styles.js';
+function Dropdown() {
+	/*
     what i need: a button for toggling the dropdown
     content is hidden by default
     state for toggling the dropdown
 
      */
-    const [isOpen, setIsOpen] = useState(false);
-  return (
-    <OuterDropdown>
-        <Button className={isOpen ? 'mainButton open': "mainButton"} startIcon={<Settings className='rotate'/>} endIcon={isOpen ? <ArrowDropUp/> : <ArrowDropDown/>} color="secondary" variant="contained" onClick={()=>{setIsOpen((prev)=>{return !prev})}}>Settings</Button>
-        {<div className={isOpen ? 'dropdownContent showContent' : "dropdownContent"}>
-            <div className='dropdownItem'><Button startIcon={<OpenInNewIcon/>} endIcon={<ArrowDropUp sx={{visibility:"hidden"}} />} variant='contained' color='secondary'>Open Settings</Button></div>
-            <div className='dropdownItem'><Button startIcon={<EditIcon/>} endIcon={<ArrowDropUp sx={{visibility:"hidden"}} />} variant='contained' color='secondary'>Change Avatar</Button></div>
-            <div className='dropdownItem'><Button startIcon={<PasswordIcon/>} endIcon={<ArrowDropUp sx={{visibility:"hidden"}} />} variant='contained' color='secondary'>Change Password</Button></div>
-            <div className='dropdownItem'><Button startIcon={<EmailIcon/>} endIcon={<ArrowDropUp sx={{visibility:"hidden"}} />} variant='contained' color='secondary'>Change Email</Button></div>
-        </div>}
-    </OuterDropdown>
-  )
+	const {setModal, setModalStatus, setTab} = useContext(ModalContext);
+	const [isOpen, setIsOpen] = useState(false);
+	return (
+		<OuterDropdown>
+			<Button
+				className={isOpen ? 'mainButton open' : 'mainButton'}
+				color="secondary"
+				endIcon={isOpen ? <ArrowDropUp /> : <ArrowDropDown />}
+				onClick={() => {
+					setIsOpen((prev) => {
+						return !prev;
+					});
+				}}
+				startIcon={<Settings className="rotate" />}
+				variant="contained">
+				Settings
+			</Button>
+
+			<div className={isOpen ? 'dropdownContent showContent' : 'dropdownContent'}>
+				<div className="dropdownItem">
+					<Button
+						color="secondary"
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('0');
+						}}
+						startIcon={<OpenInNewIcon />}
+						variant="contained">
+						Open Settings
+					</Button>
+				</div>
+
+				<div className="dropdownItem">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('0');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<EditIcon />}
+						variant="contained">
+						Change Avatar
+					</Button>
+				</div>
+
+				<div className="dropdownItem">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('1');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<PasswordIcon />}
+						variant="contained">
+						Change Password
+					</Button>
+				</div>
+
+				<div className="dropdownItem">
+					<Button
+						color="secondary"
+						onClick={() => {
+							setModal('settings');
+							setModalStatus(true);
+							setTab('1');
+						}}
+						endIcon={<ArrowDropUp sx={{visibility: 'hidden'}} />}
+						startIcon={<EmailIcon />}
+						variant="contained">
+						Change Email
+					</Button>
+				</div>
+			</div>
+		</OuterDropdown>
+	);
 }
 
-export default Dropdown
+export default Dropdown;
