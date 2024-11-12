@@ -50,7 +50,7 @@
 		"vite-plugin-eslint": "^1.8.1"
 	},
 	"lint-staged": {
-		"*.js": "eslint --cache --fix",
-		"*.{js,css,md,html,json}": "prettier --cache --write"
+		"*.js": "eslint --fix",
+		"*.{js,css,md,html,json}": "prettier --write"
 	}
 }
