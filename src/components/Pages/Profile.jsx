@@ -7,6 +7,7 @@ import {InfoSection, GamesSection, OuterProfile} from '../Profile/index.styles';
 import GameCard from '../Game/GameCard';
 import Dropdown from '../Dropdown';
 import ProfileStats from '../Stats/ProfileStats';
+import ProfileSkeleton from '../Profile/profileSkeleton';
 function Profile() {
 	//getting userName... maybe later use id
 	const {name} = useParams();
@@ -18,7 +19,7 @@ function Profile() {
 	console.log(data);
 	return (
 		<div className="mainContent">
-			{isLoading ? <div>Loading...</div> : null}
+			{isLoading && <ProfileSkeleton />}
 			{error ? <div>{error}</div> : null}
 			{data[0]?.username ? (
 				<OuterProfile>
@@ -35,7 +36,7 @@ function Profile() {
 						/>
 					</InfoSection>
 					<GamesSection>
-						{gamesLoading ? <div>Loading...</div> : null}
+						{gamesLoading ? <div></div> : null}
 						{gamesError ? <div>{gamesError}</div> : null}
 						{games ? (
 							<div className="games" id="gameCards">
