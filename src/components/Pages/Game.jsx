@@ -4,6 +4,7 @@ import GameInfo from '../Game/gameInfo';
 import GameImage from '../Game/gameImage';
 import {GamePage} from '../Game/index.styles';
 import useApiFetcher from '../../hooks/useApiFetcher';
+import GameSkeleton from '../Game/gameSkeleton';
 function Game() {
 	const {id} = useParams();
 	const [game, setGame] = useState({});
@@ -17,7 +18,7 @@ function Game() {
 
 	return (
 		<div className="mainContent" id="game">
-			{isLoading ? <p>Loading...</p> : null}
+			{isLoading && <GameSkeleton />}
 
 			{isError ? <p>Error...</p> : null}
 

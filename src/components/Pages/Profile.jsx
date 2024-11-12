@@ -7,6 +7,7 @@ import {InfoSection, GamesSection, OuterProfile} from '../Profile/index.styles';
 import GameCard from '../Game/GameCard';
 import Dropdown from '../Dropdown';
 import ProfileStats from '../Stats/ProfileStats';
+import ProfileSkeleton from '../Profile/profileSkeleton';
 function Profile() {
 	//getting userName... maybe later use id
 	const {name} = useParams();
@@ -15,15 +16,15 @@ function Profile() {
 	const {data: games, isLoading: gamesLoading, error: gamesError} = useContext(GameContext);
 	const storedUsername = window.localStorage.getItem('username');
 	const LoggedIn = window.localStorage.getItem('userStatus') === 'true' ? true : false;
-
+	console.log(data);
 	return (
 		<div className="mainContent">
-			{isLoading ? <div>Loading...</div> : null}
+			{isLoading && <ProfileSkeleton />}
 			{error ? <div>{error}</div> : null}
 			{data[0]?.username ? (
 				<OuterProfile>
 					<InfoSection>
-						<ProfileInfo username={data[0].username} />
+						<ProfileInfo username={data[0]?.username} url={data[0]?.photoURL} />
 						{/* here the settings dropdown will be, and stats*/}
 						{LoggedIn && storedUsername === name ? <Dropdown /> : null}
 						<ProfileStats
@@ -35,7 +36,7 @@ function Profile() {
 						/>
 					</InfoSection>
 					<GamesSection>
-						{gamesLoading ? <div>Loading...</div> : null}
+						{gamesLoading ? <div></div> : null}
 						{gamesError ? <div>{gamesError}</div> : null}
 						{games ? (
 							<div className="games" id="gameCards">

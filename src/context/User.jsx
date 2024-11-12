@@ -52,6 +52,7 @@ function User({children}) {
 		window.localStorage.removeItem('username');
 		window.localStorage.removeItem('token');
 		window.localStorage.removeItem('refreshToken');
+		window.localStorage.removeItem('profilePicture');
 	};
 
 	const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +78,7 @@ function User({children}) {
 
 			localStorage.setItem('refreshToken', response.refreshToken);
 			refreshToken.current = response.refreshToken;
-
+			localStorage.setItem('profilePicture', response.profilePicture);
 			localStorage.setItem('username', response.username);
 			localStorage.setItem('userStatus', true);
 			setLoggedIn(true);
