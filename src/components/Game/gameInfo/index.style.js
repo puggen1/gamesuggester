@@ -32,7 +32,7 @@ const GameInfoDiv = styled('div')(({theme}) => ({
 }));
 
 const Title = styled(Typography)(() => ({
-	gridColumn: '1/3',
+	gridColumn: '1/4',
 
 	'@media (max-width: 768px)': {
 		gridColumn: '1/4',
@@ -40,7 +40,7 @@ const Title = styled(Typography)(() => ({
 	},
 }));
 const Description = styled(Typography)(() => ({
-	gridRow: '2/3',
+	gridRow: '3/4',
 	gridColumn: '1/4',
 	height: '100%',
 	'@media (max-width: 768px)': {
@@ -50,18 +50,18 @@ const Description = styled(Typography)(() => ({
 	},
 }));
 const AddedBy = styled(Typography)(() => ({
-	gridColumn: '3/4',
+	gridColumn: '1/2',
+	gridRow: '2/3',
 	margin: 'auto 0 auto auto',
 	'@media (max-width: 768px)': {
 		gridColumn: '1/4',
-		gridRow: '2/3',
 		margin: '0.2rem auto 1rem 0',
 	},
 }));
 const SteamLink = styled(Link)(() => ({
 	textDecorationColor: 'white',
 	gridColumn: '3/4',
-	gridRow: '3/4',
+	gridRow: '4/5',
 	marginTop: 'auto',
 	'@media (max-width: 768px)': {
 		gridColumn: '1/4',
