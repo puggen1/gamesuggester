@@ -62,7 +62,7 @@ const Settings = React.forwardRef(({value, setValue}) => {
 							<Tab icon={<ManageAccountsIcon />} iconPosition="start" label={'Profile'} value={'0'} color="warning" />
 							<Tab icon={<Lock />} iconPosition="start" label={'Security'} value={'1'} />
 						</TabList>
-						<Box sx={{overflow: 'auto', height: '100%', maxHeight: '100%'}}>
+						<Box sx={{overflow: 'auto', height: '100%', maxHeight: '100%', maxWidth: '100%', width: '100%'}}>
 							<TabPanel value="0" sx={{padding: '0 1rem', overflow: 'auto'}}>
 								<ProfileTab feedBack={setMessage} openFeedback={setIsOpen} setFeedBackType={setError} />
 							</TabPanel>

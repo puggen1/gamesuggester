@@ -12,7 +12,7 @@ function NavProfileSection({loggedIn, setOpenDrawer}) {
 		<Outer loggedIn={loggedIn}>
 			{loggedIn ? (
 				<LoggedInSection>
-					<NavProfileBanner username={localStorage.getItem('username')} />
+					<NavProfileBanner username={localStorage.getItem('username')} url={localStorage.getItem('profilePicture')} />
 
 					<div style={{display: 'flex', justifyContent: 'space-between'}}>
 						<Link to={'/profile/' + localStorage.getItem('username')}>

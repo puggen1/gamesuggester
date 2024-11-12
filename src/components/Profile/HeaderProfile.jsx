@@ -5,13 +5,14 @@ import {Typography} from '@mui/material';
 
 function HeaderProfile({user}) {
 	if (user) {
+		let avatar = localStorage.getItem('profilePicture');
 		return (
 			<Link className="headerProfile" to={'/profile/' + user.username}>
 				<Typography component="p" margin="0" variant="body1">
 					{user.username}
 				</Typography>
 
-				<ProfileImage picture={user.profilePicture} size="small" />
+				<ProfileImage picture={avatar} size="small" />
 			</Link>
 		);
 	}
